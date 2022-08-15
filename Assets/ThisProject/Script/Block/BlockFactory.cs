@@ -32,18 +32,12 @@ public class BlockFactory : SingletonMonoBehaviour<BlockFactory>
     }
 
     /// <summary>
-    /// ブロックを生成して返します(こっちはキャストまでしてくれる版）.
+    /// ブロックを生成して返します(こっちは指定の型で生成してくれる版）.
+    /// ... こうするならそもそもこの関数いらないのでは...?
     /// </summary>
     /// <returns></returns>
-    public T CreateBlock<T>(CommonDefines.EBlockType needBlock) where T : ABlock
+    public T CreateBlock<T>() where T : ABlock, new()
     {
-        ABlock createdBlock = CreateBlock( needBlock );
-
-        if( createdBlock == null )
-        {
-            return null;
-        }
-
-        return createdBlock as T;
+        return new T();
     }
 }

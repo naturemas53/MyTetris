@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class Piece 
 {
-    List<ABlock> blocks = null;
     CommonDefines.PieceParam param = null;
     CommonDefines.EPieceRotate currentRotate = 0;
 
-    public readonly CommonDefines.EShapeType SHAPE_TYPE = CommonDefines.EShapeType.SHAPE_NONE;
-
-    public Piece( CommonDefines.EShapeType selfShapeType, CommonDefines.PieceParam selfParam )
+    public Piece( CommonDefines.PieceParam selfParam )
     {
-        SHAPE_TYPE = selfShapeType;
         currentRotate = CommonDefines.EPieceRotate.ZERO_O_CLOCK; // 最初は0度から
         param = selfParam;
     }

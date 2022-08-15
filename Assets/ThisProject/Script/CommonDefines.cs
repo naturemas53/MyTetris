@@ -83,8 +83,11 @@ public static class CommonDefines
     /// ピースのパラメータ
     /// </summary>
     public class PieceParam
-    {   
-
+    {
+        /// <summary>
+        /// 構成するブロック
+        /// </summary>
+        public List<ABlock> blocks;
         /// <summary>
         /// 軸位置からのブロック位置
         /// </summary>
