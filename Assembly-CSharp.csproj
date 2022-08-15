@@ -58,11 +58,15 @@
   <ItemGroup>
     <Compile Include="Assets\ThisProject\Script\GamePlay\State\AState.cs" />
     <Compile Include="Assets\ThisProject\Script\Field.cs" />
+    <Compile Include="Assets\ThisProject\Script\Piece\PieceDataColumns.cs" />
+    <Compile Include="Assets\PieceMakeTool\Script\PieceMakeToolMain.cs" />
+    <Compile Include="Assets\ThisProject\Script\NextPieceSet\ANextPieceSet.cs" />
     <Compile Include="Assets\ThisProject\Script\GamePlay\GamePlayContext.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\Piece.cs" />
     <Compile Include="Assets\ThisProject\Script\Block\BlockFactory.cs" />
     <Compile Include="Assets\ThisProject\Script\CommonDefines.cs" />
     <Compile Include="Assets\ThisProject\Script\Block\ABlock.cs" />
+    <Compile Include="Assets\PieceMakeTool\Script\Vector2IntInputer.cs" />
     <Compile Include="Assets\ThisProject\Script\Block\WallBlock.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\PieceFactory\APieceFactory.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\PieceFactory\NormalPieceFactory.cs" />
@@ -71,8 +75,6 @@
     <Compile Include="Assets\ThisProject\Script\CommonUtil.cs" />
     <Compile Include="Assets\ThisProject\Script\Block\NormalBlock.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\PieceControll.cs" />
-    <Compile Include="Assets\ThisProject\Script\NextPieceSet\ANextPieceSet.cs" />
-    <Compile Include="Assets\ThisProject\Script\Piece\PieceDataColumns.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
