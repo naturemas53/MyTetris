@@ -57,20 +57,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\ThisProject\Script\GamePlay\State\AState.cs" />
+    <Compile Include="Assets\ThisProject\Script\Field.cs" />
     <Compile Include="Assets\ThisProject\Script\GamePlay\GamePlayContext.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\Piece.cs" />
+    <Compile Include="Assets\ThisProject\Script\Block\BlockFactory.cs" />
     <Compile Include="Assets\ThisProject\Script\CommonDefines.cs" />
     <Compile Include="Assets\ThisProject\Script\Block\ABlock.cs" />
     <Compile Include="Assets\ThisProject\Script\Block\WallBlock.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\PieceBlockGenerator\APieceBlockGenerator.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\PieceBlockGenerator\NormalPieceBlockGenerator.cs" />
+    <Compile Include="Assets\ThisProject\Script\SingletonMonoBehaviour.cs" />
     <Compile Include="Assets\ThisProject\Script\Block\SpaceBlock.cs" />
     <Compile Include="Assets\ThisProject\Script\CommonUtil.cs" />
     <Compile Include="Assets\ThisProject\Script\Block\NormalBlock.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\PieceControll.cs" />
-    <Compile Include="Assets\ThisProject\Script\Field.cs" />
-    <Compile Include="Assets\ThisProject\Script\Block\BlockFactory.cs" />
-    <Compile Include="Assets\ThisProject\Script\SingletonMonoBehaviour.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

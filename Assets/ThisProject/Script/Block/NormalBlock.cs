@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class NormalBlock : ABlock
 {
-    public NormalBlock( Sprite image ) : base ( image, CommonDefines.EBlockType.BLOCK_NORMAL)
+    public class Option
+    {
+        public Field ownerField;
+    }
+
+    Option optionValue = null;
+
+    public NormalBlock() : base (CommonDefines.EBlockType.BLOCK_NORMAL)
     {
         IsCanLineAlign = true;
         IsHaveColision = true;
     }
 
-    public override void Erace()
+    public void SetOption( Option setOption )
+    {
+        optionValue = setOption;
+    }
+
+    public override void ExecuteLineAligned()
     {
         // TODO:消去時の処理
+        base.ExecuteLineAligned();
     }
 
 }

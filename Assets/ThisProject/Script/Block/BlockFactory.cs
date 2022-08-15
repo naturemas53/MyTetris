@@ -17,12 +17,11 @@ public class BlockFactory : SingletonMonoBehaviour<BlockFactory>
     {
         ABlock retBlock = null;
 
-        // TODO: コンストラクト時のimage指定は後に廃止予定.
         switch ( needBlock )
         {
-            case CommonDefines.EBlockType.BLOCK_EMPTY:  retBlock = new SpaceBlock(null);  break;
-            case CommonDefines.EBlockType.BLOCK_WALL:   retBlock = new WallBlock(null);   break;
-            case CommonDefines.EBlockType.BLOCK_NORMAL: retBlock = new NormalBlock(null); break;
+            case CommonDefines.EBlockType.BLOCK_EMPTY:  retBlock = new SpaceBlock();  break;
+            case CommonDefines.EBlockType.BLOCK_WALL:   retBlock = new WallBlock();   break;
+            case CommonDefines.EBlockType.BLOCK_NORMAL: retBlock = new NormalBlock(); break;
             
             default:
                 Debug.LogError( "知らないブロックタイプ or NONEが渡されました. nullを返却します。" );
@@ -30,5 +29,21 @@ public class BlockFactory : SingletonMonoBehaviour<BlockFactory>
         }
 
         return retBlock;
+    }
+
+    /// <summary>
+    /// ブロックを生成して返します(こっちはキャストまでしてくれる版）.
+    /// </summary>
+    /// <returns></returns>
+    public T CreateBlock<T>(CommonDefines.EBlockType needBlock) where T : ABlock
+    {
+        ABlock createdBlock = CreateBlock( needBlock );
+
+        if( createdBlock == null )
+        {
+            return null;
+        }
+
+        return createdBlock as T;
     }
 }

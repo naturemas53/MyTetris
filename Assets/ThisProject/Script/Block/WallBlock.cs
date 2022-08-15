@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class WallBlock: ABlock
 {
-    public WallBlock( Sprite image ) : base ( image, CommonDefines.EBlockType.BLOCK_WALL)
+    public WallBlock() : base ( CommonDefines.EBlockType.BLOCK_WALL)
     {
         IsCanLineAlign = false;
         IsHaveColision = true;
     }
-
 }
