@@ -49,7 +49,9 @@ public class Field
         // 通常壁・空白は使いまわしても大丈夫だと思うので、ここで生成しちゃう.
         BlockFactory blockFactory = BlockFactory.Instance;
         spaceBlock = blockFactory.CreateBlock( CommonDefines.EBlockType.BLOCK_EMPTY );
+        spaceBlock.OwnedSelf( this );
         wallBlock  = blockFactory.CreateBlock( CommonDefines.EBlockType.BLOCK_WALL );
+        wallBlock .OwnedSelf( this );
 
         Initialize();
     }

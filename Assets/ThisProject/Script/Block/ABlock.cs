@@ -5,6 +5,10 @@ using UnityEngine;
 public abstract class ABlock
 {
     /// <summary>
+    /// ブロックを所有しているフィールド.
+    /// </summary>
+    Field ownerField = null;
+    /// <summary>
     /// 当たり判定持ち？
     /// </summary>
     public bool IsHaveColision { get; protected set; } = false;
@@ -29,6 +33,22 @@ public abstract class ABlock
     public virtual void ExecuteLineAligned() 
     {
         //Debug.LogWarningFormat("消去時の動作が定義されていません。 仕様であれば当警告は無視してください。:{0}", BLOCK_TYPE.ToString());
+    }
+
+    /// <summary>
+    /// このブロックを所持します（Field必須）.
+    /// </summary>
+    public void OwnedSelf(Field ownField)
+    {
+        ownerField = ownField;
+    }
+
+    /// <summary>
+    /// 当ブロックを手放します.
+    /// </summary>
+    public void LetGoSelf()
+    {
+        ownerField = null;
     }
 
 }

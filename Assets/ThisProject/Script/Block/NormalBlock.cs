@@ -6,7 +6,6 @@ public class NormalBlock : ABlock
 {
     public class Option
     {
-        public Field ownerField; // ブロックを所有しているフィールド.
         public CommonDefines.EShapeType shapeType = CommonDefines.EShapeType.SHAPE_NONE;
     }
 
