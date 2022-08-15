@@ -56,18 +56,19 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\ThisProject\Script\GamePlay\State\AState.cs" />
+    <Compile Include="Assets\ThisProject\Script\GamePlay\GamePlayContext.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\Piece.cs" />
     <Compile Include="Assets\ThisProject\Script\CommonDefines.cs" />
     <Compile Include="Assets\ThisProject\Script\Block\ABlock.cs" />
     <Compile Include="Assets\ThisProject\Script\Block\WallBlock.cs" />
-    <Compile Include="Assets\ThisProject\Script\Block\SpaceBlock.cs" />
-    <Compile Include="Assets\ThisProject\Script\Block\NormalBlock.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\PieceBlockGenerator\APieceBlockGenerator.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\PieceBlockGenerator\NormalPieceBlockGenerator.cs" />
-    <Compile Include="Assets\ThisProject\Script\GamePlay\GamePlayContext.cs" />
-    <Compile Include="Assets\ThisProject\Script\GamePlay\State\AState.cs" />
-    <Compile Include="Assets\ThisProject\Script\Piece\PieceControll.cs" />
+    <Compile Include="Assets\ThisProject\Script\Block\SpaceBlock.cs" />
     <Compile Include="Assets\ThisProject\Script\CommonUtil.cs" />
+    <Compile Include="Assets\ThisProject\Script\Block\NormalBlock.cs" />
+    <Compile Include="Assets\ThisProject\Script\Piece\PieceControll.cs" />
+    <Compile Include="Assets\ThisProject\Script\Field.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

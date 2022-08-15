@@ -3,3 +3,6 @@ Library/
 Logs/
 obj/
 Packages/
+Temp/
+*.bkp
+*.dtmp
