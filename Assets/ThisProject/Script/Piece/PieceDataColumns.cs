@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using static CommonDefines;
 
-[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/CreatePieceDataColumns")]
 public class PieceDataColumns : ScriptableObject
 {
     // ëÂëÃPieceParamÇ∆ìØÇ∂
@@ -31,4 +30,16 @@ public class PieceDataColumns : ScriptableObject
     /// å`èÛ
     /// </summary>
     public EShapeType shapeType = EShapeType.SHAPE_NONE;
+
+    public PieceDataColumns()
+    {
+        blockOffSets = new Dictionary<EPieceRotate, List<Vector2Int>>();
+        kickBacks    = new Dictionary<EPieceRotate, KickBackSet>();
+
+        for (int i = 0; i < PIECE_ROTATE_NUM; ++i)
+        {
+            blockOffSets.Add((EPieceRotate)i, new List<Vector2Int>());
+            kickBacks.Add((EPieceRotate)i, new KickBackSet());
+        }
+    }
 }

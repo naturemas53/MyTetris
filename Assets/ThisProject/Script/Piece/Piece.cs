@@ -19,7 +19,7 @@ public class Piece
     /// <returns></returns>
     public Vector2Int GetInitPos()
     {
-        return param.initPos;
+        return param.pieceDatas.initPos;
     }
 
     /// <summary>
@@ -32,7 +32,7 @@ public class Piece
         int nextRotate = (int)currentRotate + (int)rotateDirection;
         currentRotate = (CommonDefines.EPieceRotate)CommonUtil.LoopValue( nextRotate, 0, (int)CommonDefines.EPieceRotate.MAX - 1);
 
-        checkKickBackList = param.kickBacks[currentRotate].data[rotateDirection];
+        checkKickBackList = param.pieceDatas.kickBacks[currentRotate].data[rotateDirection];
     }
 
 }

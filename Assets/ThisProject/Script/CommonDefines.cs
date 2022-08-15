@@ -89,30 +89,9 @@ public static class CommonDefines
         /// </summary>
         public List<ABlock> blocks;
         /// <summary>
-        /// 軸位置からのブロック位置
+        /// 当ピースに関するデータ（形状タイプ等）
         /// </summary>
-        public Dictionary<EPieceRotate, List<Vector2Int>> blockOffSets;
-        /// <summary>
-        /// ピースのキックバックデータ
-        /// </summary>
-        public Dictionary<EPieceRotate, KickBackSet> kickBacks;
-        /// <summary>
-        /// 初期位置
-        /// </summary>
-        public Vector2Int initPos = Vector2Int.zero;
-        /// <summary>
-        /// 形状
-        /// </summary>
-        public EShapeType shapeType = EShapeType.SHAPE_NONE;
-
-        public PieceParam()
-        {
-            for( int i = 0; i < PIECE_ROTATE_NUM; ++i )
-            {
-                blockOffSets.Add( (EPieceRotate)i, new List<Vector2Int>() );
-                kickBacks   .Add( (EPieceRotate)i, new KickBackSet() );
-            }
-        }
+        public PieceDataColumns pieceDatas;
     }
 
     /// <summary>
