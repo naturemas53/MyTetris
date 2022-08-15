@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f31f2c270dcbaac48878813b34fa0808, type: 3}
-  m_Name: NORMAL_PIECE_S
+  m_Name: DUMMY_Data
   m_EditorClassIdentifier: 
-  selfDataName: NORMAL_PIECE_S
+  selfDataName: NORMAL_PIECE_I
   initPos: {x: 0, y: 0}
-  shapeType: 2
+  shapeType: 7
