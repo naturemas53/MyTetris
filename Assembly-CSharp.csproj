@@ -64,8 +64,8 @@
     <Compile Include="Assets\ThisProject\Script\CommonDefines.cs" />
     <Compile Include="Assets\ThisProject\Script\Block\ABlock.cs" />
     <Compile Include="Assets\ThisProject\Script\Block\WallBlock.cs" />
-    <Compile Include="Assets\ThisProject\Script\Piece\PieceBlockGenerator\APieceFactory.cs" />
-    <Compile Include="Assets\ThisProject\Script\Piece\PieceBlockGenerator\NormalPieceFactory.cs" />
+    <Compile Include="Assets\ThisProject\Script\Piece\PieceFactory\APieceFactory.cs" />
+    <Compile Include="Assets\ThisProject\Script\Piece\PieceFactory\NormalPieceFactory.cs" />
     <Compile Include="Assets\ThisProject\Script\SingletonMonoBehaviour.cs" />
     <Compile Include="Assets\ThisProject\Script\Block\SpaceBlock.cs" />
     <Compile Include="Assets\ThisProject\Script\CommonUtil.cs" />
