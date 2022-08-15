@@ -72,6 +72,7 @@
     <Compile Include="Assets\ThisProject\Script\Block\NormalBlock.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\PieceControll.cs" />
     <Compile Include="Assets\ThisProject\Script\NextPieceSet\ANextPieceSet.cs" />
+    <Compile Include="Assets\ThisProject\Script\Piece\PieceDataColumns.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
