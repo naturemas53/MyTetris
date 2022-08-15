@@ -31,9 +31,11 @@ public static class CommonDefines
     public enum ERotateDirection
     {
         NONE,  // いずれでもない（多分ありえない）
+
         RIGHT = 1,   // 右回転
         LEFT  = -1,  // 左回転
 
+        MAX = 2, // 回転の種類数
         // 1、-1としたのは回転時、上記EPieceRotateの変動に便利そうだな　と思ったから
     }
 
