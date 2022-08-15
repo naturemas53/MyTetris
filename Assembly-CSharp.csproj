@@ -69,6 +69,8 @@
     <Compile Include="Assets\ThisProject\Script\Block\NormalBlock.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\PieceControll.cs" />
     <Compile Include="Assets\ThisProject\Script\Field.cs" />
+    <Compile Include="Assets\ThisProject\Script\Block\BlockFactory.cs" />
+    <Compile Include="Assets\ThisProject\Script\SingletonMonoBehaviour.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

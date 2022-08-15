@@ -29,6 +29,15 @@ public class Field
     /// </summary>
     ABlock[] fieldBlocks = null;
 
+    /// <summary>
+    /// 空白ブロック(使いまわす予定）
+    /// </summary>
+    ABlock spaceBlock = null;
+    /// <summary>
+    /// 壁ブロック(使いまわす予定)
+    /// </summary>
+    ABlock wallBlock = null;
+
     public Field()
     { 
         // 定数値　算定
@@ -36,6 +45,11 @@ public class Field
         PLAY_AREA_IDX_RECT = CalcPlayAreaIdxRect();
 
         fieldBlocks = new ABlock[ SIZE.x * SIZE.y ];
+
+        // 通常壁・空白は使いまわしても大丈夫だと思うので、ここで生成しちゃう.
+        BlockFactory blockFactory = BlockFactory.Instance;
+        spaceBlock = blockFactory.CreateBlock( CommonDefines.EBlockType.BLOCK_EMPTY );
+        wallBlock  = blockFactory.CreateBlock( CommonDefines.EBlockType.BLOCK_WALL );
 
         Initialize();
     }
@@ -47,7 +61,23 @@ public class Field
     {
         Array.Clear( fieldBlocks, 0, fieldBlocks.Length );
 
-        // TODO: 壁とスペース配置処理
+        // 壁・空白の設定
+        bool isFloor = false; // 床位置？
+        bool isWall = false;  // 壁位置？
+        int xPos = 0; // 今のインデックスの横位置は？（全体で）
+        bool isWallBlock = false; // 壁ブロックを入れるべき？
+        for( int i = 0; i < fieldBlocks.Length; ++i )
+        {
+            // 床チェック(一番下）
+            isFloor = i >= (SIZE.x * (SIZE.y - 1));
+            // 壁チェック(左右)
+            xPos = i % SIZE.x;
+            isWall = ( xPos == 0 ) || ( xPos == SIZE.x - 1 );
+
+            // 場所確認後、壁か空白を入れる.
+            isWallBlock = ( isFloor || isWallBlock );
+            fieldBlocks[i] = (isWallBlock) ? wallBlock : spaceBlock;
+        }
     }
 
     /// <summary>
