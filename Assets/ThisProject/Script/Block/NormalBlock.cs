@@ -6,10 +6,21 @@ public class NormalBlock : ABlock
 {
     public class Option
     {
-        public Field ownerField;
+        public Field ownerField; // ブロックを所有しているフィールド.
+        public CommonDefines.EShapeType shapeType = CommonDefines.EShapeType.SHAPE_NONE;
     }
 
     Option optionValue = null;
+
+    CommonDefines.EShapeType ShapeType 
+    {
+        get
+        {
+            if( optionValue == null ) return CommonDefines.EShapeType.SHAPE_NONE;
+
+            return optionValue.shapeType;
+        }
+    }
 
     public NormalBlock() : base (CommonDefines.EBlockType.BLOCK_NORMAL)
     {
@@ -25,7 +36,6 @@ public class NormalBlock : ABlock
     public override void ExecuteLineAligned()
     {
         // TODO:消去時の処理
-        base.ExecuteLineAligned();
     }
 
 }

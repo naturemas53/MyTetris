@@ -62,7 +62,7 @@ public class PieceControll
     /// </summary>
     /// <param name="moveDirection"></param>
     /// <returns>‰ñ“]‚É@¬Œ÷FTrue ¸”sFFalse</returns>
-    public bool TryMove(int rotateDirection)
+    public bool TryRotate(int rotateDirection)
     {
         return true;
     }
