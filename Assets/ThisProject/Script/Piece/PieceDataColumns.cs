@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static CommonDefines;
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/CreatePieceDataColumns")]
 public class PieceDataColumns : ScriptableObject
@@ -17,11 +18,11 @@ public class PieceDataColumns : ScriptableObject
     /// <summary>
     /// 軸位置からのブロック位置
     /// </summary>
-    public List<Vector2Int>[] blockOffsets = new List<Vector2Int>[CommonDefines.PIECE_ROTATE_NUM];
+    public Dictionary<EPieceRotate, List<Vector2Int>> blockOffSets;
     /// <summary>
     /// ピースのキックバックデータ
     /// </summary>
-    public CommonDefines.KickBackSet[] kickBackChecks = new CommonDefines.KickBackSet[CommonDefines.PIECE_ROTATE_NUM];
+    public Dictionary<EPieceRotate, KickBackSet> kickBacks;
     /// <summary>
     /// 初期位置
     /// </summary>
@@ -29,5 +30,5 @@ public class PieceDataColumns : ScriptableObject
     /// <summary>
     /// 形状
     /// </summary>
-    public CommonDefines.EShapeType shapeType = CommonDefines.EShapeType.SHAPE_NONE;
+    public EShapeType shapeType = EShapeType.SHAPE_NONE;
 }

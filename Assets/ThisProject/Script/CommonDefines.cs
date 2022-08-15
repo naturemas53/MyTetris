@@ -71,11 +71,11 @@ public static class CommonDefines
     /// </summary>
     public class KickBackSet
     {
-        public Dictionary<ERotateDirection, List<Vector2Int>> kickBackDelta;
+        public Dictionary<ERotateDirection, List<Vector2Int>> data;
 
         public KickBackSet()
         {
-            kickBackDelta = new Dictionary<ERotateDirection, List<Vector2Int>>();
+            data = new Dictionary<ERotateDirection, List<Vector2Int>>();
         }
     }
 
@@ -91,11 +91,11 @@ public static class CommonDefines
         /// <summary>
         /// 軸位置からのブロック位置
         /// </summary>
-        public List<Vector2Int>[] blockOffsets = new List<Vector2Int>[PIECE_ROTATE_NUM];
+        public Dictionary<EPieceRotate, List<Vector2Int>> blockOffSets;
         /// <summary>
         /// ピースのキックバックデータ
         /// </summary>
-        public KickBackSet[] kickBackChecks = new KickBackSet[PIECE_ROTATE_NUM];
+        public Dictionary<EPieceRotate, KickBackSet> kickBacks;
         /// <summary>
         /// 初期位置
         /// </summary>
@@ -109,8 +109,8 @@ public static class CommonDefines
         {
             for( int i = 0; i < PIECE_ROTATE_NUM; ++i )
             {
-                blockOffsets[i] = new List<Vector2Int>();
-                blockOffsets[i].Clear();
+                blockOffSets.Add( (EPieceRotate)i, new List<Vector2Int>() );
+                kickBacks   .Add( (EPieceRotate)i, new KickBackSet() );
             }
         }
     }
