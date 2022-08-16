@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 5654565882214788073}
   - component: {fileID: 8516772592725023488}
   - component: {fileID: 4386192370595067879}
-  - component: {fileID: 8198787393198841212}
+  - component: {fileID: 349117930607774220}
   m_Layer: 5
   m_Name: Block
   m_TagString: Untagged
@@ -213,7 +213,7 @@ MonoBehaviour:
   isAxisPos: 0
   backGround: {fileID: 8906474581402758718}
   radioButton: {fileID: 1726101999497870603}
---- !u!114 &8198787393198841212
+--- !u!114 &349117930607774220
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,6 +233,22 @@ MonoBehaviour:
         - m_Target: {fileID: 4386192370595067879}
           m_TargetAssemblyTypeName: PiecePartsBlock, Assembly-CSharp
           m_MethodName: OnEnterMousePointer
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4386192370595067879}
+          m_TargetAssemblyTypeName: PiecePartsBlock, Assembly-CSharp
+          m_MethodName: OnBlockClick
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

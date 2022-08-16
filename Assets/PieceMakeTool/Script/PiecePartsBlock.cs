@@ -26,10 +26,20 @@ public class PiecePartsBlock : MonoBehaviour
     /// </summary>
     [System.NonSerialized]
     public Vector2Int selfOffestPos = Vector2Int.zero;
+    /// <summary>
+    /// ブロック所有者
+    /// </summary>
+    [System.NonSerialized]
+    public BlockField owner = null;
 
     public bool IsAxisPos
     {
         get { return isAxisPos; }
+    }
+    
+    public bool IsSelect
+    {
+        get { return isSelect; }
     }
 
     // Start is called before the first frame update
@@ -49,10 +59,37 @@ public class PiecePartsBlock : MonoBehaviour
         UpdateRadioButtonColor();
     }
 
+    /// <summary>
+    /// 操作状況から選択状況を変更します
+    /// </summary>
+    void SetSelectFlagFromControllType( BlockField.EControllType eControllType )
+    {
+        if (eControllType == BlockField.EControllType.CONTROLL_DISABLE_CONTROLL) return;
+
+        bool isSelect = (eControllType == BlockField.EControllType.CONTROLL_SELECT);
+        SetSelectFlag( isSelect );
+    }
+
     public void OnEnterMousePointer()
     {
-        // TODO: 所有者にマウスの操作状況聞いて、必要に応じてフラグ変えとく
-        SetSelectFlag( true );
+        SetSelectFlagFromControllType( owner.CurrentControll );
+    }
+
+    public void OnBlockClick()
+    {
+        Debug.Log("マウス下げた時のそれ");
+        owner.OnClickedBlock( this );
+        SetSelectFlagFromControllType(owner.CurrentControll);
+    }
+
+    private void OnMouseDown()
+    {
+        OnBlockClick();
+    }
+
+    private void OnMouseEnter()
+    {
+        OnEnterMousePointer();
     }
 
     /// <summary>
