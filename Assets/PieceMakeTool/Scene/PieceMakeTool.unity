@@ -4440,6 +4440,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 781595578}
     m_Modifications:
+    - target: {fileID: 4386192370595067879, guid: 6555e52c5b3cdad4da63a191a3c38ed1, type: 3}
+      propertyPath: isAxisPos
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5476584867633804289, guid: 6555e52c5b3cdad4da63a191a3c38ed1, type: 3}
       propertyPath: m_Name
       value: Block (4)
@@ -27717,6 +27721,10 @@ PrefabInstance:
     - target: {fileID: 5476584867633804289, guid: 6555e52c5b3cdad4da63a191a3c38ed1, type: 3}
       propertyPath: m_Name
       value: Block
+      objectReference: {fileID: 0}
+    - target: {fileID: 5476584867633804289, guid: 6555e52c5b3cdad4da63a191a3c38ed1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5654565882214788073, guid: 6555e52c5b3cdad4da63a191a3c38ed1, type: 3}
       propertyPath: m_Pivot.x
