@@ -86,7 +86,6 @@ public class BlockField : MonoBehaviour
 
     public void OnReleaseMouseButton()
     {
-        Debug.Log( "É}ÉEÉXè„Ç∞ÇΩéûÇÃÇªÇÍ" );
         CurrentControll = EControllType.CONTROLL_DISABLE_CONTROLL;
     }
 

@@ -77,7 +77,6 @@ public class PiecePartsBlock : MonoBehaviour
 
     public void OnBlockClick()
     {
-        Debug.Log("ƒ}ƒEƒX‰º‚°‚½Žž‚Ì‚»‚ê");
         owner.OnClickedBlock( this );
         SetSelectFlagFromControllType(owner.CurrentControll);
     }
@@ -90,6 +89,11 @@ public class PiecePartsBlock : MonoBehaviour
     private void OnMouseEnter()
     {
         OnEnterMousePointer();
+    }
+
+    public void OnMousePointerUp()
+    {
+        owner.OnReleaseMouseButton();
     }
 
     /// <summary>
