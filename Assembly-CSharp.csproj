@@ -56,13 +56,16 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\PieceMakeTool\Script\BlockField.cs" />
     <Compile Include="Assets\ThisProject\Script\GamePlay\State\AState.cs" />
     <Compile Include="Assets\ThisProject\Script\Field.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\PieceDataColumns.cs" />
     <Compile Include="Assets\PieceMakeTool\Script\PieceMakeToolMain.cs" />
+    <Compile Include="Assets\PieceMakeTool\Script\RotateTabSet.cs" />
     <Compile Include="Assets\ThisProject\Script\NextPieceSet\ANextPieceSet.cs" />
     <Compile Include="Assets\ThisProject\Script\GamePlay\GamePlayContext.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\Piece.cs" />
+    <Compile Include="Assets\PieceMakeTool\Script\RotateTab.cs" />
     <Compile Include="Assets\ThisProject\Script\Block\BlockFactory.cs" />
     <Compile Include="Assets\ThisProject\Script\CommonDefines.cs" />
     <Compile Include="Assets\ThisProject\Script\Block\ABlock.cs" />
@@ -75,9 +78,8 @@
     <Compile Include="Assets\ThisProject\Script\Block\SpaceBlock.cs" />
     <Compile Include="Assets\ThisProject\Script\CommonUtil.cs" />
     <Compile Include="Assets\ThisProject\Script\Block\NormalBlock.cs" />
-    <Compile Include="Assets\ThisProject\Script\Piece\PieceControll.cs" />
     <Compile Include="Assets\PieceMakeTool\Script\PiecePartsBlock.cs" />
-    <Compile Include="Assets\PieceMakeTool\Script\BlockField.cs" />
+    <Compile Include="Assets\ThisProject\Script\Piece\PieceControll.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
