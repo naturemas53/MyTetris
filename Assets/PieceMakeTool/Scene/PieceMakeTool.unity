@@ -5266,6 +5266,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 431481772}
+  - component: {fileID: 431481773}
   m_Layer: 5
   m_Name: CommonParamArea
   m_TagString: Untagged
@@ -5295,6 +5296,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -470}
   m_SizeDelta: {x: 560, y: 180}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &431481773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431481771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42580aaef3d8df94494d281dc5a26d1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataNameInputer: {fileID: 242664558}
 --- !u!1 &438375125
 GameObject:
   m_ObjectHideFlags: 0
@@ -20474,6 +20488,7 @@ MonoBehaviour:
   rotateTab: {fileID: 1108283669}
   blocks: {fileID: 2084850185}
   kickBackParams: {fileID: 823289294}
+  commonParams: {fileID: 431481773}
   guardTop: {fileID: 1705890300}
 --- !u!1 &1598782513
 GameObject:

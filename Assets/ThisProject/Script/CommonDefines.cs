@@ -66,6 +66,8 @@ public static class CommonDefines
         SHAPE_I,
 
         SHAPE_SPECIAL, // 特集形状のピース
+
+        SHAPE_MAX,
     }
 
     /// <summary>

@@ -14,6 +14,8 @@ public class PieceMakeToolMain : MonoBehaviour
     BlockField blocks;
     [SerializeField]
     KickBackParams kickBackParams;
+    [SerializeField]
+    PieceCommonParams commonParams;
 
     [SerializeField]
     GameObject guardTop;
@@ -35,6 +37,11 @@ public class PieceMakeToolMain : MonoBehaviour
         yield return new WaitForEndOfFrame();
 
         rotateTab.SetSelectRotate( EPieceRotate.ZERO_O_CLOCK );
+
+        PieceCommonParams.Params @params = new PieceCommonParams.Params();
+        @params.shapeType = EShapeType.SHAPE_Z;
+        commonParams.CurrentParam = @params;
+
         guardTop.SetActive(false) ;
     }
 

@@ -80,6 +80,7 @@
     <Compile Include="Assets\ThisProject\Script\Block\NormalBlock.cs" />
     <Compile Include="Assets\PieceMakeTool\Script\PiecePartsBlock.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\PieceControll.cs" />
+    <Compile Include="Assets\PieceMakeTool\Script\PieceCommonParams.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
