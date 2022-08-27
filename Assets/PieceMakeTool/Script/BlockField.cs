@@ -29,19 +29,23 @@ public class BlockField : MonoBehaviour
     /// <summary>
     /// ブロックのオフセット
     /// </summary>
-    Dictionary<EPieceRotate, List<Vector2Int>> blockOffsets;
+    Dictionary<EPieceRotate, List<Vector2Int>> blockOffsetMap;
     /// <summary>
     /// 盤面のブロック
     /// </summary>
     PiecePartsBlock[] blocks;
+    /// <summary>
+    /// 現在の回転状態
+    /// </summary>
+    EPieceRotate currentRotate = EPieceRotate.None;
 
     // Start is called before the first frame update
     void Start()
     {
-        blockOffsets = new Dictionary<EPieceRotate, List<Vector2Int>>();
+        blockOffsetMap = new Dictionary<EPieceRotate, List<Vector2Int>>();
         for( int i = 0; i < (int)EPieceRotate.MAX; ++i )
         {
-            blockOffsets.Add( (EPieceRotate)i, new List<Vector2Int>() );
+            blockOffsetMap.Add( (EPieceRotate)i, new List<Vector2Int>() );
         }
 
         InitializeToAllRotatePiece();
@@ -78,7 +82,7 @@ public class BlockField : MonoBehaviour
     /// </summary>
     void InitializeToAllRotatePiece()
     {
-        foreach( var offsets in blockOffsets )
+        foreach( var offsets in blockOffsetMap )
         {
             offsets.Value.Clear();
         }
@@ -101,6 +105,51 @@ public class BlockField : MonoBehaviour
     {
         bool isSelect = clickBlock.IsSelect;
         CurrentControll = (isSelect) ? EControllType.CONTROLL_DISSELECT : EControllType.CONTROLL_SELECT;
+    }
+
+    /// <summary>
+    /// 上部タブが選択されたときのコールバック
+    /// </summary>
+    /// <param name="nextRotate"></param>
+    public void OnChangePieceRotate(EPieceRotate nextRotate)
+    {
+        CacheCurrentParam();
+        SetBlocksFromRotate( nextRotate );
+        currentRotate = nextRotate;
+    }
+
+    /// <summary>
+    /// 現在の値を保持します
+    /// </summary>
+    void CacheCurrentParam()
+    {
+        if (currentRotate == EPieceRotate.None) return;
+
+        List<Vector2Int> blockOffsets = new List<Vector2Int>();
+        blockOffsets.Clear();
+
+        foreach( var block in blocks )
+        {
+            if( block.IsSelect )
+            {
+                blockOffsets.Add( block.selfOffestPos );
+            }
+        }
+
+        blockOffsetMap[currentRotate] = blockOffsets;
+    }
+
+    /// <summary>
+    /// 指定回転のブロックを設定
+    /// </summary>
+    /// <param name="fetchRotate"></param>
+    void SetBlocksFromRotate(EPieceRotate fetchRotate)
+    {
+        foreach( var block in blocks )
+        {
+            bool select = blockOffsetMap[fetchRotate].Contains(block.selfOffestPos);
+            block.SetSelectFlag(select);
+        }
     }
 
     /// <summary>

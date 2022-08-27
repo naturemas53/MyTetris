@@ -17,9 +17,13 @@ public class KickBackParams : MonoBehaviour
     Dictionary<EPieceRotate, KickBackSet> kickBackSetMap;
     Vector2IntInputer[] paramInputer;
 
+    EPieceRotate currentRotate = EPieceRotate.None;
+
     // Start is called before the first frame update
     void Start()
     {
+        InitKickbackParam();
+
         StartCoroutine( CoLateStart() );
     }
 
@@ -58,6 +62,28 @@ public class KickBackParams : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// キックバックパラメータの初期化.
+    /// </summary>
+    void InitKickbackParam()
+    {
+        kickBackSetMap = new Dictionary<EPieceRotate, KickBackSet>();
+
+        for( int i =0; i < (int)EPieceRotate.MAX; ++i )
+        {
+            EPieceRotate rotate = (EPieceRotate)i;
+
+            KickBackSet kickbackSet = new KickBackSet();
+            for( int j = 0; j < KICKBACK_COUNT; ++j )
+            {
+                kickbackSet.data[ERotateDirection.LEFT ].Add( Vector2Int.zero );
+                kickbackSet.data[ERotateDirection.RIGHT].Add( Vector2Int.zero );
+            }
+
+            kickBackSetMap.Add( rotate, kickbackSet );
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -67,10 +93,50 @@ public class KickBackParams : MonoBehaviour
     /// <summary>
     /// 上部タブが選択されたときのコールバック
     /// </summary>
-    /// <param name="prevRotate"></param>
     /// <param name="nextRotate"></param>
-    public void OnChangePieceRotate( EPieceRotate prevRotate, EPieceRotate nextRotate )
+    public void OnChangePieceRotate( EPieceRotate nextRotate )
     {
+        CacheCurrentParam();
+        SetKickbackParamFromRotate( nextRotate );
+        currentRotate = nextRotate;
+    }
 
+    void CacheCurrentParam()
+    {
+        if (currentRotate == EPieceRotate.None) return;
+
+        KickBackSet kickBackSet = new KickBackSet();
+
+        for (int i = 0; i < KICKBACK_COUNT; ++i)
+        {
+            int baseIdx = i * (int)ERotateDirection.MAX;
+
+            Vector2Int leftparam = new Vector2Int();
+            Vector2Int rightparam = new Vector2Int();
+
+            paramInputer[baseIdx]    .TryGetVector2Int( out leftparam  );
+            paramInputer[baseIdx + 1].TryGetVector2Int( out rightparam );
+
+            kickBackSet.data[ERotateDirection.LEFT] .Add( leftparam  );
+            kickBackSet.data[ERotateDirection.RIGHT].Add( rightparam );
+        }
+
+        kickBackSetMap[currentRotate] = kickBackSet;
+    }
+
+    /// <summary>
+    /// 指定回転のキックバックパラメータを設定
+    /// </summary>
+    /// <param name="fetchRotate"></param>
+    void SetKickbackParamFromRotate( EPieceRotate fetchRotate )
+    {
+        KickBackSet kickBackSet = kickBackSetMap[fetchRotate];
+        
+        for( int i = 0; i  < KICKBACK_COUNT; ++i )
+        {
+            int baseIdx = i * (int)ERotateDirection.MAX;
+            paramInputer[baseIdx]    .SetVector2Int( kickBackSet.data[ERotateDirection.LEFT] [i] );
+            paramInputer[baseIdx + 1].SetVector2Int( kickBackSet.data[ERotateDirection.RIGHT][i] );
+        }
     }
 }

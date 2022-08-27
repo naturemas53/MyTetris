@@ -78,6 +78,10 @@ public static class CommonDefines
         public KickBackSet()
         {
             data = new Dictionary<ERotateDirection, List<Vector2Int>>();
+            data[ ERotateDirection.LEFT  ] = new List<Vector2Int>();
+            data[ ERotateDirection.LEFT  ].Clear();
+            data[ ERotateDirection.RIGHT ] = new List<Vector2Int>();
+            data[ ERotateDirection.RIGHT ].Clear();
         }
     }
 

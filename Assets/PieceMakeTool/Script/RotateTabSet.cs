@@ -1,12 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using static CommonDefines;
 
 public class RotateTabSet : MonoBehaviour
 {
     Toggle[] tabs;
+
+    public class ChangedRotateEvent : UnityEvent<EPieceRotate>
+    {
+    };
+
+    public ChangedRotateEvent OnChangedRotate { get; private set; } = new ChangedRotateEvent();
 
     // Start is called before the first frame update
     void Start()
@@ -42,8 +49,18 @@ public class RotateTabSet : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// 指定タブを選択状態にします
+    /// </summary>
+    /// <param name="selectRotate"></param>
+    public void SetSelectRotate(EPieceRotate selectRotate)
+    {
+        tabs[(int)selectRotate].isOn = true;
+        OnSelectedRotateTab( selectRotate );
+    }
+
     public void OnSelectedRotateTab( EPieceRotate selectRotate )
     {
-        Debug.Log( selectRotate.ToString() );
+        OnChangedRotate.Invoke( selectRotate );
     }
 }
