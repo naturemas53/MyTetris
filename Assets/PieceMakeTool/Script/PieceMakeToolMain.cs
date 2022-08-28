@@ -82,13 +82,46 @@ public class PieceMakeToolMain : MonoBehaviour
     /// </summary>
     public void Inport()
     {
-        Debug.Log("工事中...");
-
         OpenFileDialog ofd = new OpenFileDialog();
+        ofd.Filter = "PieceParamFile (*.asset)|*.asset";
         ofd.Title = "生成済みのピースパラメータアセットを選択してください";
-        ofd.ShowDialog();
+        DialogResult result =  ofd.ShowDialog();
 
-        Debug.LogFormat( "SelectedPath:{0}", ofd.FileName );
+        // それっぽい選択肢でなければPASS
+        if( result != DialogResult.OK && result != DialogResult.Yes )
+        {
+            Debug.Log( "読み込みをキャンセルしました" );
+            return;
+        }
+
+        PieceDataColumns pieceData;
+        try
+        {
+            string selectedFilePath = ofd.FileName;
+            int assetPathIdx = selectedFilePath.IndexOf("Assets\\");
+            if (assetPathIdx < 0) throw new System.Exception();
+
+            string filePathFromAssets = selectedFilePath.Substring( assetPathIdx );
+
+            pieceData = AssetDatabase.LoadAssetAtPath<PieceDataColumns>(filePathFromAssets);
+
+            if( pieceData == null )
+            {
+                throw new System.Exception();
+            }
+        }
+        catch
+        {
+            Debug.Log("読み込みに失敗しました　関係ないファイルを選択しましたか？");
+            return;
+        }
+
+        PieceCommonParams.Params @params = new PieceCommonParams.Params();
+        @params.dataName = pieceData.selfDataName;
+        @params.shapeType = pieceData.shapeType;
+        @params.initPos = pieceData.initPos;
+
+        commonParams.CurrentParam = @params;
     }
 
     void OnChangedRotate( EPieceRotate nextRotate )
