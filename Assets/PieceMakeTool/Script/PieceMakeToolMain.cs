@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using UnityEngine;
 using UnityEditor;
 
@@ -82,6 +83,12 @@ public class PieceMakeToolMain : MonoBehaviour
     public void Inport()
     {
         Debug.Log("工事中...");
+
+        OpenFileDialog ofd = new OpenFileDialog();
+        ofd.Title = "生成済みのピースパラメータアセットを選択してください";
+        ofd.ShowDialog();
+
+        Debug.LogFormat( "SelectedPath:{0}", ofd.FileName );
     }
 
     void OnChangedRotate( EPieceRotate nextRotate )
