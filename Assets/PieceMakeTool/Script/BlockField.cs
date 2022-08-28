@@ -29,7 +29,7 @@ public class BlockField : MonoBehaviour
     /// <summary>
     /// ブロックのオフセット
     /// </summary>
-    Dictionary<EPieceRotate, List<Vector2Int>> blockOffsetMap;
+    public Dictionary<EPieceRotate, List<Vector2Int>> BlockOffsetMap { get; private set; } = null;
     /// <summary>
     /// 盤面のブロック
     /// </summary>
@@ -42,10 +42,10 @@ public class BlockField : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        blockOffsetMap = new Dictionary<EPieceRotate, List<Vector2Int>>();
+        BlockOffsetMap = new Dictionary<EPieceRotate, List<Vector2Int>>();
         for( int i = 0; i < (int)EPieceRotate.MAX; ++i )
         {
-            blockOffsetMap.Add( (EPieceRotate)i, new List<Vector2Int>() );
+            BlockOffsetMap.Add( (EPieceRotate)i, new List<Vector2Int>() );
         }
 
         InitializeToAllRotatePiece();
@@ -82,7 +82,7 @@ public class BlockField : MonoBehaviour
     /// </summary>
     void InitializeToAllRotatePiece()
     {
-        foreach( var offsets in blockOffsetMap )
+        foreach( var offsets in BlockOffsetMap )
         {
             offsets.Value.Clear();
         }
@@ -136,7 +136,7 @@ public class BlockField : MonoBehaviour
             }
         }
 
-        blockOffsetMap[currentRotate] = blockOffsets;
+        BlockOffsetMap[currentRotate] = blockOffsets;
     }
 
     /// <summary>
@@ -147,7 +147,7 @@ public class BlockField : MonoBehaviour
     {
         foreach( var block in blocks )
         {
-            bool select = blockOffsetMap[fetchRotate].Contains(block.selfOffestPos);
+            bool select = BlockOffsetMap[fetchRotate].Contains(block.selfOffestPos);
             block.SetSelectFlag(select);
         }
     }

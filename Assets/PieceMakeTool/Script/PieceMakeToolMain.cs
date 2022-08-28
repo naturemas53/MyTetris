@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 using static CommonDefines;
 
@@ -56,6 +57,22 @@ public class PieceMakeToolMain : MonoBehaviour
     /// </summary>
     public void Export()
     {
+#if UNITY_EDITOR
+        var pieceColumus = new PieceDataColumns();
+
+        pieceColumus.blockOffSets = blocks.BlockOffsetMap;
+        pieceColumus.kickBacks = kickBackParams.KickBackSetMap;
+
+        var commonOptions = commonParams.CurrentParam;
+        pieceColumus.initPos = commonOptions.initPos;
+        pieceColumus.shapeType = commonOptions.shapeType;
+        pieceColumus.selfDataName = commonOptions.dataName;
+
+        string outPathTotal = outputPath + pieceColumus.selfDataName + ".asset";
+        AssetDatabase.CreateAsset( pieceColumus , outPathTotal);
+        AssetDatabase.Refresh();
+#else
+#endif
 
     }
 

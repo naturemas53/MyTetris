@@ -14,7 +14,7 @@ public class KickBackParams : MonoBehaviour
     /// </summary>
     readonly string LABEL_FORMAT = "Check{0}-{1}";
 
-    Dictionary<EPieceRotate, KickBackSet> kickBackSetMap;
+    public Dictionary<EPieceRotate, KickBackSet> KickBackSetMap { get; private set; } = null;
     Vector2IntInputer[] paramInputer;
 
     EPieceRotate currentRotate = EPieceRotate.None;
@@ -67,7 +67,7 @@ public class KickBackParams : MonoBehaviour
     /// </summary>
     void InitKickbackParam()
     {
-        kickBackSetMap = new Dictionary<EPieceRotate, KickBackSet>();
+        KickBackSetMap = new Dictionary<EPieceRotate, KickBackSet>();
 
         for( int i =0; i < (int)EPieceRotate.MAX; ++i )
         {
@@ -80,7 +80,7 @@ public class KickBackParams : MonoBehaviour
                 kickbackSet.data[ERotateDirection.RIGHT].Add( Vector2Int.zero );
             }
 
-            kickBackSetMap.Add( rotate, kickbackSet );
+            KickBackSetMap.Add( rotate, kickbackSet );
         }
     }
 
@@ -121,7 +121,7 @@ public class KickBackParams : MonoBehaviour
             kickBackSet.data[ERotateDirection.RIGHT].Add( rightparam );
         }
 
-        kickBackSetMap[currentRotate] = kickBackSet;
+        KickBackSetMap[currentRotate] = kickBackSet;
     }
 
     /// <summary>
@@ -130,7 +130,7 @@ public class KickBackParams : MonoBehaviour
     /// <param name="fetchRotate"></param>
     void SetKickbackParamFromRotate( EPieceRotate fetchRotate )
     {
-        KickBackSet kickBackSet = kickBackSetMap[fetchRotate];
+        KickBackSet kickBackSet = KickBackSetMap[fetchRotate];
         
         for( int i = 0; i  < KICKBACK_COUNT; ++i )
         {

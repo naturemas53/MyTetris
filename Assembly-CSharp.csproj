@@ -65,6 +65,7 @@
     <Compile Include="Assets\ThisProject\Script\NextPieceSet\ANextPieceSet.cs" />
     <Compile Include="Assets\ThisProject\Script\GamePlay\GamePlayContext.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\Piece.cs" />
+    <Compile Include="Assets\PieceMakeTool\Script\PieceCommonParams.cs" />
     <Compile Include="Assets\PieceMakeTool\Script\RotateTab.cs" />
     <Compile Include="Assets\ThisProject\Script\Block\BlockFactory.cs" />
     <Compile Include="Assets\ThisProject\Script\CommonDefines.cs" />
@@ -80,7 +81,6 @@
     <Compile Include="Assets\ThisProject\Script\Block\NormalBlock.cs" />
     <Compile Include="Assets\PieceMakeTool\Script\PiecePartsBlock.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\PieceControll.cs" />
-    <Compile Include="Assets\PieceMakeTool\Script\PieceCommonParams.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
