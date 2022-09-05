@@ -78,6 +78,15 @@ public class BlockField : MonoBehaviour
     }
 
     /// <summary>
+    /// ブロックオフセットを設定します.
+    /// </summary>
+    public void SetBlockOffsets(Dictionary<EPieceRotate, List<Vector2Int>> setOffsets)
+    {
+        BlockOffsetMap = setOffsets;
+        SetBlocksFromRotate(currentRotate);
+    }
+
+    /// <summary>
     /// すべての回転について初期化
     /// </summary>
     void InitializeToAllRotatePiece()

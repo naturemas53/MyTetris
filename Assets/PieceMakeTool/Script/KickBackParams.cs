@@ -84,6 +84,15 @@ public class KickBackParams : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// キックバックパラメータを設定します.
+    /// </summary>
+    public void SetKickbackParams(Dictionary<EPieceRotate, KickBackSet> setKickBack)
+    {
+        KickBackSetMap = setKickBack;
+        SetKickbackParamFromRotate( currentRotate );
+    }
+
     // Update is called once per frame
     void Update()
     {

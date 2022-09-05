@@ -116,6 +116,9 @@ public class PieceMakeToolMain : MonoBehaviour
             return;
         }
 
+        blocks.SetBlockOffsets( pieceData.blockOffSets );
+        kickBackParams.SetKickbackParams( pieceData.kickBacks );
+
         PieceCommonParams.Params @params = new PieceCommonParams.Params();
         @params.dataName = pieceData.selfDataName;
         @params.shapeType = pieceData.shapeType;
