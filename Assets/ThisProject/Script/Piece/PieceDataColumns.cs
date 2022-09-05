@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static CommonDefines;
 
-public class PieceDataColumns : ScriptableObject
+public class PieceDataColumns
 {
     // ‘å‘ÌPieceParam‚Æ“¯‚¶
     // ‚½‚¾‚µA

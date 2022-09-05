@@ -58,6 +58,7 @@ public class PieceMakeToolMain : MonoBehaviour
     /// </summary>
     public void Export()
     {
+        return;
 #if UNITY_EDITOR
         var pieceColumus = new PieceDataColumns();
 
@@ -70,8 +71,6 @@ public class PieceMakeToolMain : MonoBehaviour
         pieceColumus.selfDataName = commonOptions.dataName;
 
         string outPathTotal = outputPath + pieceColumus.selfDataName + ".asset";
-        AssetDatabase.CreateAsset( pieceColumus , outPathTotal);
-        AssetDatabase.Refresh();
 #else
 #endif
 
@@ -82,8 +81,10 @@ public class PieceMakeToolMain : MonoBehaviour
     /// </summary>
     public void Inport()
     {
+        Debug.Log("諸事情でもう一回調整中...");
+
         OpenFileDialog ofd = new OpenFileDialog();
-        ofd.Filter = "PieceParamFile (*.asset)|*.asset";
+        ofd.Filter = "PieceParamFile (*.json)|*.json";
         ofd.Title = "生成済みのピースパラメータアセットを選択してください";
         DialogResult result =  ofd.ShowDialog();
 
@@ -103,12 +104,12 @@ public class PieceMakeToolMain : MonoBehaviour
 
             string filePathFromAssets = selectedFilePath.Substring( assetPathIdx );
 
-            pieceData = AssetDatabase.LoadAssetAtPath<PieceDataColumns>(filePathFromAssets);
+            //pieceData = AssetDatabase.LoadAssetAtPath<PieceDataColumns>(filePathFromAssets);
 
-            if( pieceData == null )
-            {
-                throw new System.Exception();
-            }
+            //if( pieceData == null )
+            //{
+            //    throw new System.Exception();
+            //}
         }
         catch
         {
@@ -116,15 +117,15 @@ public class PieceMakeToolMain : MonoBehaviour
             return;
         }
 
-        blocks.SetBlockOffsets( pieceData.blockOffSets );
-        kickBackParams.SetKickbackParams( pieceData.kickBacks );
+        //blocks.SetBlockOffsets( pieceData.blockOffSets );
+        //kickBackParams.SetKickbackParams( pieceData.kickBacks );
 
-        PieceCommonParams.Params @params = new PieceCommonParams.Params();
-        @params.dataName = pieceData.selfDataName;
-        @params.shapeType = pieceData.shapeType;
-        @params.initPos = pieceData.initPos;
+        //PieceCommonParams.Params @params = new PieceCommonParams.Params();
+        //@params.dataName = pieceData.selfDataName;
+        //@params.shapeType = pieceData.shapeType;
+        //@params.initPos = pieceData.initPos;
 
-        commonParams.CurrentParam = @params;
+        //commonParams.CurrentParam = @params;
     }
 
     void OnChangedRotate( EPieceRotate nextRotate )
