@@ -79,6 +79,7 @@
     <Compile Include="Assets\ThisProject\Script\Block\SpaceBlock.cs" />
     <Compile Include="Assets\ThisProject\Script\CommonUtil.cs" />
     <Compile Include="Assets\ThisProject\Script\Block\NormalBlock.cs" />
+    <Compile Include="Assets\ThisProject\Script\Piece\PieceDataColumsIO.cs" />
     <Compile Include="Assets\PieceMakeTool\Script\PiecePartsBlock.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\PieceControll.cs" />
   </ItemGroup>

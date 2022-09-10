@@ -20496,7 +20496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b62c868b347b2084da1beb403f380f6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outputPath: Assets/PieceMakeTool/TestMakeData
+  outputPath: Assets/PieceMakeTool/TestMakeData/
   rotateTab: {fileID: 1108283669}
   blocks: {fileID: 2084850185}
   kickBackParams: {fileID: 823289294}

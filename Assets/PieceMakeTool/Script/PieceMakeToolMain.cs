@@ -58,7 +58,6 @@ public class PieceMakeToolMain : MonoBehaviour
     /// </summary>
     public void Export()
     {
-        return;
 #if UNITY_EDITOR
         var pieceColumus = new PieceDataColumns();
 
@@ -70,7 +69,12 @@ public class PieceMakeToolMain : MonoBehaviour
         pieceColumus.shapeType = commonOptions.shapeType;
         pieceColumus.selfDataName = commonOptions.dataName;
 
-        string outPathTotal = outputPath + pieceColumus.selfDataName + ".asset";
+        bool isSuccess = PieceDataColumsIO.Export( outputPath, pieceColumus );
+
+        if(!isSuccess)
+        {
+            Debug.LogError("出力に失敗しました");
+        }
 #else
 #endif
 
@@ -96,36 +100,39 @@ public class PieceMakeToolMain : MonoBehaviour
         }
 
         PieceDataColumns pieceData;
-        try
-        {
-            string selectedFilePath = ofd.FileName;
-            int assetPathIdx = selectedFilePath.IndexOf("Assets\\");
-            if (assetPathIdx < 0) throw new System.Exception();
+        //try
+        //{
+        //    string selectedFilePath = ofd.FileName;
+        //    int assetPathIdx = selectedFilePath.IndexOf("Assets\\");
+        //    if (assetPathIdx < 0) throw new System.Exception();
 
-            string filePathFromAssets = selectedFilePath.Substring( assetPathIdx );
+        //    string filePathFromAssets = selectedFilePath.Substring( assetPathIdx );
 
-            //pieceData = AssetDatabase.LoadAssetAtPath<PieceDataColumns>(filePathFromAssets);
+        //    pieceData = AssetDatabase.LoadAssetAtPath<PieceDataColumns>(filePathFromAssets);
 
-            //if( pieceData == null )
-            //{
-            //    throw new System.Exception();
-            //}
-        }
-        catch
+        //    if (pieceData == null)
+        //    {
+        //        throw new System.Exception();
+        //    }
+        //}
+        //catch
+
+        pieceData = PieceDataColumsIO.Import( ofd.FileName );
+        if( pieceData == null )
         {
             Debug.Log("読み込みに失敗しました　関係ないファイルを選択しましたか？");
             return;
         }
 
-        //blocks.SetBlockOffsets( pieceData.blockOffSets );
-        //kickBackParams.SetKickbackParams( pieceData.kickBacks );
+        blocks.SetBlockOffsets(pieceData.blockOffSets);
+        kickBackParams.SetKickbackParams(pieceData.kickBacks);
 
-        //PieceCommonParams.Params @params = new PieceCommonParams.Params();
-        //@params.dataName = pieceData.selfDataName;
-        //@params.shapeType = pieceData.shapeType;
-        //@params.initPos = pieceData.initPos;
+        PieceCommonParams.Params @params = new PieceCommonParams.Params();
+        @params.dataName = pieceData.selfDataName;
+        @params.shapeType = pieceData.shapeType;
+        @params.initPos = pieceData.initPos;
 
-        //commonParams.CurrentParam = @params;
+        commonParams.CurrentParam = @params;
     }
 
     void OnChangedRotate( EPieceRotate nextRotate )
