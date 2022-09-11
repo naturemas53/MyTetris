@@ -77,9 +77,40 @@ public class Field
             isWall = ( xPos == 0 ) || ( xPos == SIZE.x - 1 );
 
             // 場所確認後、壁か空白を入れる.
-            isWallBlock = ( isFloor || isWallBlock );
+            isWallBlock = ( isFloor || isWall);
             fieldBlocks[i] = (isWallBlock) ? wallBlock : spaceBlock;
         }
+    }
+
+    /// <summary>
+    /// ブロックを置きます.
+    /// </summary>
+    public void SetBlock( ABlock setBlock, Vector2Int setPosition )
+    {
+        if (!IsValidPosToField(setPosition))
+        {
+            Debug.LogWarning( "フィールド範囲外が指定されました" );
+            return;
+        }
+
+        int index = ConvVector2IntToIndex(setPosition);
+
+        fieldBlocks[index] = setBlock;
+    }
+
+    /// <summary>
+    /// 指定位置のブロックを取得します.
+    /// </summary>
+    /// <param name="position"></param>
+    /// <returns></returns>
+    public ABlock GetBlock( Vector2Int position )
+    {
+        ABlock retBlock = null;
+        if (!IsValidPosToField(position)) return retBlock;
+
+        int index = ConvVector2IntToIndex( position );
+
+        return fieldBlocks[ index ];
     }
 
     /// <summary>
@@ -114,4 +145,26 @@ public class Field
         return playAreaIdxRect;
     }
 
+    /// <summary>
+    /// フィールド内を指している位置か
+    /// </summary>
+    /// <returns></returns>
+    bool IsValidPosToField( Vector2Int checkPos )
+    {
+        if( checkPos.x >= SIZE.x ) return false;
+        if( checkPos.y >= SIZE.y ) return false;
+        if( checkPos.x < 0 ) return false;
+        if( checkPos.y < 0 ) return false;
+
+        return true;
+    }
+
+    /// <summary>
+    /// ブロック位置を配列インデックスに変換します
+    /// </summary>
+    /// <returns></returns>
+    int ConvVector2IntToIndex( Vector2Int sourcePos )
+    {
+        return (sourcePos.y * SIZE.y) + sourcePos.x;
+    }
 }
