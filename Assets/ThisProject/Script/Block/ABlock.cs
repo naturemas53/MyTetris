@@ -30,7 +30,8 @@ public abstract class ABlock
     /// <summary>
     /// ラインが揃った時の動作
     /// </summary>
-    public virtual void ExecuteLineAligned() 
+    /// <param name="selfBlockPos"> 自ブロックの位置 </param>
+    public virtual void ExecuteLineAligned( Vector2Int selfBlockPos ) 
     {
         //Debug.LogWarningFormat("消去時の動作が定義されていません。 仕様であれば当警告は無視してください。:{0}", BLOCK_TYPE.ToString());
     }

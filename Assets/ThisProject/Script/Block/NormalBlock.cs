@@ -32,7 +32,7 @@ public class NormalBlock : ABlock
         optionValue = setOption;
     }
 
-    public override void ExecuteLineAligned()
+    public override void ExecuteLineAligned( Vector2Int selfBlockPos )
     {
         // TODO:消去時の処理
     }
