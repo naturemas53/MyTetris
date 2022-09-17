@@ -71,21 +71,22 @@
     <Compile Include="Assets\ThisProject\Script\CommonDefines.cs" />
     <Compile Include="Assets\ThisProject\Script\Block\ABlock.cs" />
     <Compile Include="Assets\PieceMakeTool\Script\Vector2IntInputer.cs" />
+    <Compile Include="Assets\ThisProject\Script\Block\View\WallBlockView.cs" />
     <Compile Include="Assets\ThisProject\Script\Block\WallBlock.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\PieceFactory\APieceFactory.cs" />
     <Compile Include="Assets\PieceMakeTool\Script\KickBackParams.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\PieceFactory\NormalPieceFactory.cs" />
+    <Compile Include="Assets\ThisProject\Script\Block\View\NormalBlockView.cs" />
+    <Compile Include="Assets\ThisProject\Script\Block\View\SpaceBlockView.cs" />
     <Compile Include="Assets\ThisProject\Script\SingletonMonoBehaviour.cs" />
     <Compile Include="Assets\ThisProject\Script\Block\SpaceBlock.cs" />
     <Compile Include="Assets\ThisProject\Script\CommonUtil.cs" />
     <Compile Include="Assets\ThisProject\Script\Block\NormalBlock.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\PieceDataColumsIO.cs" />
+    <Compile Include="Assets\ThisProject\Script\Field\FieldView.cs" />
     <Compile Include="Assets\PieceMakeTool\Script\PiecePartsBlock.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\PieceControll.cs" />
     <Compile Include="Assets\ThisProject\Script\Block\View\ABlockView.cs" />
-    <Compile Include="Assets\ThisProject\Script\Block\View\SpaceBlockView.cs" />
-    <Compile Include="Assets\ThisProject\Script\Block\View\WallBlockView.cs" />
-    <Compile Include="Assets\ThisProject\Script\Block\View\NormalBlockView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\System.Windows.Forms.dll" />

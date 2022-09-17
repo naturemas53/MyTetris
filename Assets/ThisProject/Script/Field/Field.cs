@@ -163,8 +163,13 @@ public class Field
     /// ブロック位置を配列インデックスに変換します
     /// </summary>
     /// <returns></returns>
-    int ConvVector2IntToIndex( Vector2Int sourcePos )
+    public int ConvVector2IntToIndex( Vector2Int sourcePos )
     {
-        return (sourcePos.y * SIZE.y) + sourcePos.x;
+        return (sourcePos.y * SIZE.x) + sourcePos.x;
+    }
+
+    public Vector2Int ConvIndexToVector2Int(int sourceIdx)
+    {
+        return new Vector2Int( (sourceIdx % SIZE.x), (sourceIdx / SIZE.x) );
     }
 }

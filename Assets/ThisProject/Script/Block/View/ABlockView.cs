@@ -6,9 +6,9 @@ using static CommonDefines;
 public abstract class ABlockView : MonoBehaviour
 {
     /// <summary>
-    /// 親のキャンバスサイズ
+    /// ブロックの基本サイズ
     /// </summary>
-    static readonly Vector2 PARENT_SIZE = new Vector2(100.0f,100.0f);
+    public static readonly Vector2 SIZE = new Vector2(50.0f,50.0f);
     /// <summary>
     /// このクラス（≒派生先）で取り扱えるブロック種類
     /// </summary>
