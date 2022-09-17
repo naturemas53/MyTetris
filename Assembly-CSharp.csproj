@@ -58,7 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\PieceMakeTool\Script\BlockField.cs" />
     <Compile Include="Assets\ThisProject\Script\GamePlay\State\AState.cs" />
-    <Compile Include="Assets\ThisProject\Script\Field.cs" />
+    <Compile Include="Assets\ThisProject\Script\Field\Field.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\PieceDataColumns.cs" />
     <Compile Include="Assets\PieceMakeTool\Script\PieceMakeToolMain.cs" />
     <Compile Include="Assets\PieceMakeTool\Script\RotateTabSet.cs" />
