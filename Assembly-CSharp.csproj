@@ -82,6 +82,10 @@
     <Compile Include="Assets\ThisProject\Script\Piece\PieceDataColumsIO.cs" />
     <Compile Include="Assets\PieceMakeTool\Script\PiecePartsBlock.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\PieceControll.cs" />
+    <Compile Include="Assets\ThisProject\Script\Block\View\ABlockView.cs" />
+    <Compile Include="Assets\ThisProject\Script\Block\View\SpaceBlockView.cs" />
+    <Compile Include="Assets\ThisProject\Script\Block\View\WallBlockView.cs" />
+    <Compile Include="Assets\ThisProject\Script\Block\View\NormalBlockView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\System.Windows.Forms.dll" />

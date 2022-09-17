@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BlockFactory : SingletonMonoBehaviour<BlockFactory>
 {
+
+
     protected override void Initialize()
     {
         // ブロック生成用のクラスだから特にない...?

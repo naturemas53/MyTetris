@@ -11,7 +11,7 @@ public class NormalBlock : ABlock
 
     Option optionValue = null;
 
-    CommonDefines.EShapeType ShapeType 
+    public CommonDefines.EShapeType ShapeType 
     {
         get
         {
