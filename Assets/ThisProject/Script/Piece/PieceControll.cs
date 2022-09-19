@@ -62,7 +62,7 @@ public class PieceControll
     /// <summary>
     /// 次に出現するピースを設定します
     /// </summary>
-    void SetPieceOfAppear( Piece piece )
+    public void SetPieceOfAppear( Piece piece )
     {
         HavePiece = piece;
         InitParams();
@@ -72,7 +72,7 @@ public class PieceControll
     /// <summary>
     /// インフィニティ等のオプションを設定します
     /// </summary>
-    void SetControllOption( PieceControllerOption newOption )
+    public void SetControllOption( PieceControllerOption newOption )
     {
         CurrentOption = newOption;
     }

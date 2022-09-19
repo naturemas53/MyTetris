@@ -8,12 +8,13 @@ public class GamePlayContext : MonoBehaviour
 
     public Field Field { get; private set; } = null;
     public PieceControll PieceControll { get; private set; } = null;
-
+    public ANextPieceSet NextPieceSet { get; private set; } = null;
 
     // Start is called before the first frame update
     void Start()
     {
         Field = new Field();
+        PieceControll = new PieceControll( Field );
 
         state = new GameInitState( this );
         state.Initialize();
@@ -29,5 +30,14 @@ public class GamePlayContext : MonoBehaviour
             state = nextState;
             state.Initialize();
         }
+    }
+
+    /// <summary>
+    /// ネク順生成を変更します
+    /// </summary>
+    public void ChangeNextGenerator( ANextPieceSet setGenerator )
+    {
+        // TODO:ネク順の引継ぎとかしなきゃ行けなさそうだけど、一旦保留
+        NextPieceSet = setGenerator;
     }
 }
