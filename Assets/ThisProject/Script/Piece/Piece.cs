@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Piece 
 {
-    CommonDefines.PieceParam param = null;
+    readonly CommonDefines.PieceParam param = null;
     CommonDefines.EPieceRotate currentRotate = 0;
 
     public Piece( CommonDefines.PieceParam selfParam )

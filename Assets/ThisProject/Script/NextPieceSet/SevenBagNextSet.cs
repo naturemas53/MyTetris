@@ -18,7 +18,12 @@ public class SevenBagNextSet : ANextPieceSet
         int pieceIdx = inBagPieces.Count;
         EShapeType createShape = inBagPieces[ pieceIdx ];
 
-        // TODO: ÉsÅ[ÉXê∂ê¨ & í«â¡èàóù
+        NormalPieceFactory factory = PieceFactoryInstances.Instance.GetFactory< NormalPieceFactory >();
+        NormalPieceFactory.Option option = new NormalPieceFactory.Option();
+        option.shapeType = createShape;
+        factory.SetOption( option );
+
+        nextPieces.Add(factory.CreatePiece());
 
         inBagPieces.RemoveAt( pieceIdx );
 
