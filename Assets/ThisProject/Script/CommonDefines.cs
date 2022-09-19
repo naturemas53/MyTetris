@@ -4,7 +4,12 @@ using UnityEngine;
 
 
 public static class CommonDefines
-{    
+{
+    /// <summary>
+    /// ファイル読み込み時の入り口部分
+    /// </summary>
+    public const string FILE_INPUT_ENTRY = "D:\\Document_D\\tetris\\Assets\\ThisProject\\Data\\";
+
     /// <summary>
     /// 回転種類の数( 0°、90°、180°、270°)
     /// </summary>
