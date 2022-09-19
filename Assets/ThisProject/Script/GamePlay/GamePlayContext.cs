@@ -5,16 +5,20 @@ using UnityEngine;
 public class GamePlayContext : MonoBehaviour
 {
     AState state = null;
-
     public Field Field { get; private set; } = null;
     public PieceControll PieceControll { get; private set; } = null;
     public ANextPieceSet NextPieceSet { get; private set; } = null;
+
+    [SerializeField]
+    FieldView fieldView;
 
     // Start is called before the first frame update
     void Start()
     {
         Field = new Field();
         PieceControll = new PieceControll( Field );
+
+        fieldView.Initalize( Field );
 
         state = new GameInitState( this );
         state.Initialize();
@@ -25,7 +29,7 @@ public class GamePlayContext : MonoBehaviour
     {
         AState nextState = state.Update();
 
-        if( state != null )
+        if( nextState != null )
         {
             state = nextState;
             state.Initialize();

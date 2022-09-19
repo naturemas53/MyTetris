@@ -79,7 +79,7 @@ public class FieldView : MonoBehaviour
     Vector2 GetBlockPosToUI( Vector2Int blockPos )
     {
         Vector2 size = ABlockView.SIZE;
-        return new Vector2( blockPos.x * size.x, blockPos.y * size.y ); 
+        return new Vector2( blockPos.x * size.x, -blockPos.y * size.y ); 
     }
 
     /// <summary>
@@ -89,7 +89,7 @@ public class FieldView : MonoBehaviour
     {
         int targetIdx = refField.ConvVector2IntToIndex(blockPos);
         ABlock block = refField.GetBlock(blockPos);
-        // TODO: BlockViewéÊìæ
+        allViews[targetIdx] = BlockViewFlyweight.Instance.GetView( block.BLOCK_TYPE );
         bool isInitialized = allViews[targetIdx].Initialize(block);
         if (!isInitialized)
         {
@@ -103,6 +103,7 @@ public class FieldView : MonoBehaviour
 
         blockTransform.SetParent( transform );
         blockTransform.localPosition = GetBlockPosToUI( blockPos );
+        blockTransform.localScale = Vector3.one;
     }
 
     /// <summary>
@@ -117,7 +118,7 @@ public class FieldView : MonoBehaviour
             return;
         }
 
-        // TODO: Viewï‘ãpèàóù
+        BlockViewFlyweight.Instance.CacheView(allViews[targetIdx]);
         allViews[targetIdx] = null;
     }
 }

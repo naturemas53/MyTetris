@@ -105,6 +105,12 @@ public static class CommonDefines
         /// 当ピースに関するデータ（形状タイプ等）
         /// </summary>
         public PieceDataColumns pieceDatas;
+
+        public PieceParam()
+        {
+            blocks = new List<ABlock>();
+            blocks.Clear();
+        }
     }
 
     /// <summary>

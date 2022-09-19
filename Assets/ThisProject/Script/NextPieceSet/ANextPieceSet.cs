@@ -14,22 +14,24 @@ public abstract class ANextPieceSet
         public uint generateNum; // 生成するNEXT数
     }
 
+    CommonOption commonSetting = new CommonOption();
+
     public CommonOption CommonSetting
     {
-        get { return CommonSetting; }
+        get { return commonSetting; }
         set
         {
-            if(value.generateNum <= 0)
+            if (value.generateNum <= 0)
             {
                 Debug.LogWarning("諸事情により、必ず1以上は生成してください... 生成数を1にします。");
                 value.generateNum = 1;
             }
 
-            bool isNeedReGenerate = ( value.generateNum != CommonSetting.generateNum);
+            bool isNeedReGenerate = (value.generateNum != CommonSetting.generateNum);
 
-            CommonSetting = value;
+            commonSetting = value;
 
-            if(isNeedReGenerate)
+            if (isNeedReGenerate)
             {
                 Debug.LogWarning("生成数が変更されたため、NEXTの再生成を行います。");
                 GenerateNext();
@@ -39,9 +41,11 @@ public abstract class ANextPieceSet
 
     public ANextPieceSet()
     {
+        nextPieces = new List<Piece>();
+
         CommonOption firstOption = new CommonOption();
         firstOption.generateNum = 1;
-        CommonSetting = firstOption;
+        commonSetting = firstOption;
     }
 
     /// <summary>

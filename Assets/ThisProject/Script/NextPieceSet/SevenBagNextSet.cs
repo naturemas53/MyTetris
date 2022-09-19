@@ -15,7 +15,8 @@ public class SevenBagNextSet : ANextPieceSet
 
     protected override void AddNextPieceImpl()
     {
-        int pieceIdx = inBagPieces.Count;
+        int pieceIdx = Random.Range(0, inBagPieces.Count);
+
         EShapeType createShape = inBagPieces[ pieceIdx ];
 
         NormalPieceFactory factory = PieceFactoryInstances.Instance.GetFactory< NormalPieceFactory >();

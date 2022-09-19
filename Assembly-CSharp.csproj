@@ -60,6 +60,7 @@
     <Compile Include="Assets\ThisProject\Script\GamePlay\State\AState.cs" />
     <Compile Include="Assets\ThisProject\Script\Field\Field.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\PieceDataColumns.cs" />
+    <Compile Include="Assets\ThisProject\Script\Block\View\BlockViewFlyweight.cs" />
     <Compile Include="Assets\PieceMakeTool\Script\PieceMakeToolMain.cs" />
     <Compile Include="Assets\PieceMakeTool\Script\RotateTabSet.cs" />
     <Compile Include="Assets\ThisProject\Script\NextPieceSet\ANextPieceSet.cs" />
@@ -90,7 +91,6 @@
     <Compile Include="Assets\PieceMakeTool\Script\PiecePartsBlock.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\PieceControll.cs" />
     <Compile Include="Assets\ThisProject\Script\Block\View\ABlockView.cs" />
-    <Compile Include="Assets\ThisProject\Script\Block\View\BlockViewFlyweight.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\System.Windows.Forms.dll" />
