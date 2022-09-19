@@ -114,6 +114,7 @@ public static class CommonDefines
     /// </summary>
     public struct PieceControllerOption
     {
+        public float dropTime; // 1段下がるまでの時間
         public float lockDownTime; // 接地から固まるまでの時間.
 
         public int moveInfinity;   // 移動インフィニティ

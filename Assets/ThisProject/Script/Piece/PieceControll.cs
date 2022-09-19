@@ -1,18 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using static CommonDefines;
 
 public class PieceControll
 {
     /// <summary>
     /// 所持ピース
     /// </summary>
-    Piece havePiece = null;
-    
+    public Piece HavePiece { get; private set; } = null;
     /// <summary>
     /// ピース位置
     /// </summary>
-    Vector2Int piecePos = Vector2Int.zero;
+    public Vector2Int PiecePos { get; private set; } = Vector2Int.zero;
+    /// <summary>
+    /// 接着済みか
+    /// </summary>
+    public bool IsLocked
+    {
+        get
+        {
+            return optionRemain.lockDownTime <= 0.0f; 
+        }
+    }
 
     /// <summary>
     /// ロックダウン時間などの現状のオプション
@@ -22,12 +33,14 @@ public class PieceControll
     /// ロックダウン時間など　の各数値の「残り値」（めんどくさかったので使いまわし）
     /// </summary>
     CommonDefines.PieceControllerOption optionRemain;
+    /// <summary>
+    /// ピースを持っているフィールド
+    /// </summary>
+    readonly Field OWN_FIELD = null;
 
-    public PieceControll( Piece firstPiece, CommonDefines.PieceControllerOption firstOption )
+    public PieceControll( Field field )
     {
-        havePiece = firstPiece;
-        CurrentOption = firstOption;
-        InitParams();
+        OWN_FIELD = field;
     }
 
     /// <summary>
@@ -39,12 +52,46 @@ public class PieceControll
     }
 
     /// <summary>
+    /// 初期位置を出現位置に設定します
+    /// </summary>
+    void SetPosToAppear()
+    {
+        // 初期位置設定.
+    }
+
+    /// <summary>
+    /// 次に出現するピースを設定します
+    /// </summary>
+    void SetPieceOfAppear( Piece piece )
+    {
+        HavePiece = piece;
+        InitParams();
+        SetPosToAppear();
+    }
+
+    /// <summary>
+    /// インフィニティ等のオプションを設定します
+    /// </summary>
+    void SetControllOption( PieceControllerOption newOption )
+    {
+        CurrentOption = newOption;
+    }
+
+    /// <summary>
     /// 更新
     /// </summary>
     /// <param name="deltaTime">経過時間</param>
-    public void Update( float deltaTime )
+    public void Update( float deltaTime, float dropMultiPlayer = 1.0f )
     {
-        optionRemain.lockDownTime -= deltaTime;
+        optionRemain.dropTime -= (deltaTime * dropMultiPlayer) ;
+
+        if ( optionRemain.dropTime < 0.0f )
+        {
+            // この時のdownは空中にある前提なので必ず成功する　はず
+            TryMove( Vector2Int.down );
+        }
+
+        //optionRemain.lockDownTime -= deltaTime;
     }
 
     /// <summary>
