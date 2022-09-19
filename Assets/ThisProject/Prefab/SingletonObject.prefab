@@ -100,4 +100,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ec706f35de9294897c53fad60a5cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originalViews: []
+  originalViews:
+  - blockType: 1
+    originalObject: {fileID: 2074810872851118057, guid: 52d2b016e90dca44aa5c091d01290ec9, type: 3}
+  - blockType: 2
+    originalObject: {fileID: 3107678082286324288, guid: cd0ea14fcf98d6241a49d6efd098dda0, type: 3}
+  - blockType: 3
+    originalObject: {fileID: 5532536254477692754, guid: ccf41137f84c906468cd150e6c88b1b6, type: 3}
