@@ -131,6 +131,16 @@ public class Field
     }
 
     /// <summary>
+    /// プレイエリアの左上を返します.
+    /// </summary>
+    /// <returns></returns>
+    public Vector2Int GetLeftTopFromPlayArea()
+    {
+        // 左の壁 & 上部バッファ分　を避ける形
+        return new Vector2Int( 1, TOP_BUFFER_SPACE );
+    }
+
+    /// <summary>
     /// プレイエリアのレクトを返します.(減点は左上っぽい)
     /// </summary>
     /// <returns></returns>

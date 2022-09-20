@@ -66,6 +66,8 @@ public class PieceView : MonoBehaviour
         for( int i = 0; i < targetPiece.Blocks.Count; ++i )
         {
             ABlockView addView = BlockViewFlyweight.Instance.GetView( targetPiece.Blocks[i].BLOCK_TYPE );
+            addView.Initialize( targetPiece.Blocks[i] );
+
             addView.transform.SetParent(transform);
             addView.transform.localScale = Vector3.one;
             useViews.Add( addView );

@@ -61,7 +61,8 @@ public class PieceControll
     /// </summary>
     void SetPosToAppear()
     {
-        // èâä˙à íuê›íË.
+        Vector2Int basePos = OWN_FIELD.GetLeftTopFromPlayArea();
+        PiecePos = basePos + HavePiece.GetInitPos();
     }
 
     /// <summary>

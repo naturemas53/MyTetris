@@ -11,6 +11,8 @@ public class GamePlayContext : MonoBehaviour
 
     [SerializeField]
     FieldView fieldView;
+    [SerializeField]
+    ControllPieceView controllPieceView;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +21,7 @@ public class GamePlayContext : MonoBehaviour
         PieceControll = new PieceControll( Field );
 
         fieldView.Initalize( Field );
+        controllPieceView.Initialize( PieceControll );
 
         state = new GameInitState( this );
         state.Initialize();
