@@ -45,6 +45,11 @@ public class NormalPieceFactory : APieceFactory
         for( int i = 0; i < NEED_BLOCK_NUM; ++i  )
         {
             NormalBlock block = factory.CreateBlock<NormalBlock>();
+            
+            NormalBlock.Option option = new NormalBlock.Option();
+            option.shapeType = optionValue.shapeType;
+            block.SetOption( option );
+
             param.blocks.Add( block );
         }
 
