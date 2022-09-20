@@ -1,11 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Piece 
 {
     readonly CommonDefines.PieceParam param = null;
     CommonDefines.EPieceRotate currentRotate = 0;
+
+    /// <summary>
+    /// 自身が回転したときのコールバック
+    /// </summary>
+    public UnityEvent OnRotateSelf { get; private set; } = new UnityEvent();
+
+    /// <summary>
+    /// 構成するブロック
+    /// </summary>
+    public List<ABlock> Blocks
+    {
+        get { return param.blocks; }
+    }
+
+    /// <summary>
+    /// 軸からのブロック位置
+    /// </summary>
+    public List<Vector2Int> BlockOffsets
+    {
+        get { return param.pieceDatas.blockOffSets[ currentRotate ]; }
+    }
 
     public Piece( CommonDefines.PieceParam selfParam )
     {
@@ -33,6 +55,8 @@ public class Piece
         currentRotate = (CommonDefines.EPieceRotate)CommonUtil.LoopValue( nextRotate, 0, (int)CommonDefines.EPieceRotate.MAX - 1);
 
         checkKickBackList = param.pieceDatas.kickBacks[currentRotate].data[rotateDirection];
+
+        OnRotateSelf.Invoke();
     }
 
 }

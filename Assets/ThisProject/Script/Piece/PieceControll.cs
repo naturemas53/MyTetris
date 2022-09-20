@@ -26,6 +26,11 @@ public class PieceControll
     }
 
     /// <summary>
+    /// ピース変更時のコールバック
+    /// </summary>
+    public UnityEvent OnChangePiece { get; private set; } = new UnityEvent();
+
+    /// <summary>
     /// ロックダウン時間などの現状のオプション
     /// </summary>
     public CommonDefines.PieceControllerOption CurrentOption { get; private set; }
@@ -67,6 +72,8 @@ public class PieceControll
         HavePiece = piece;
         InitParams();
         SetPosToAppear();
+
+        OnChangePiece.Invoke();
     }
 
     /// <summary>

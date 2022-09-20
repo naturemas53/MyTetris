@@ -36,15 +36,14 @@ public class BlockViewFlyweight : SingletonMonoBehaviour<BlockViewFlyweight>
         {
             retView = nonUseView[needType][0];
             nonUseView[needType].RemoveAt(0);
-
-            retView.gameObject.SetActive( true );
         }
         else
         {
-            // こっちなら、新しく作って返す.
+            // 未使用がないので、作って返す.
             retView = CreateView( needType );
         }
 
+        retView.gameObject.SetActive( true );
         return retView;
     }
 
