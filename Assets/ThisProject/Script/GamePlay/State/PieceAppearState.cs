@@ -9,6 +9,8 @@ public class PieceAppearState : AState
     /// </summary>
     bool isFailAppear = false;
 
+    AState nextState = null;
+
     public PieceAppearState(GamePlayContext owner)  : base(owner)
     {
     }
@@ -19,10 +21,12 @@ public class PieceAppearState : AState
         ANextPieceSet nextPieceSet = owner.NextPieceSet;
 
         isFailAppear = controll.TryAppearPiece(nextPieceSet.GetTopPiece(true));
+
+        nextState = new UpdateControllState(owner);
     }
 
     public override AState Update()
     {
-        return null;
+        return nextState;
     }
 }

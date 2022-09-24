@@ -26,6 +26,11 @@ public class PieceControll
     }
 
     /// <summary>
+    /// 接地状態か.
+    /// </summary>
+    public bool IsGround { get; private set; } = false;
+
+    /// <summary>
     /// ピース変更時のコールバック
     /// </summary>
     public UnityEvent OnChangePiece { get; private set; } = new UnityEvent();
@@ -42,6 +47,10 @@ public class PieceControll
     /// ピースを持っているフィールド
     /// </summary>
     readonly Field OWN_FIELD = null;
+    /// <summary>
+    /// どこまで下に潜ったかを保持する変数
+    /// </summary>
+    int mostBottomPos = 0;
 
     public PieceControll( Field field )
     {
@@ -54,6 +63,8 @@ public class PieceControll
     void InitParams()
     {
         optionRemain = CurrentOption;
+        IsGround = false;
+        mostBottomPos = 0;
     }
 
     /// <summary>
@@ -63,6 +74,7 @@ public class PieceControll
     {
         Vector2Int basePos = OWN_FIELD.GetLeftTopFromPlayArea();
         PiecePos = basePos + HavePiece.GetInitPos();
+        mostBottomPos = PiecePos.y;
     }
 
     /// <summary>
@@ -76,14 +88,14 @@ public class PieceControll
 
         OnChangePiece.Invoke();
 
-        return CheckCollision( PiecePos );
+        return IsValidPiecePos( PiecePos );
     }
 
     /// <summary>
     /// コリジョンチェック　等
     /// </summary>
     /// <returns></returns>
-    bool CheckCollision(Vector2Int checkBasePos)
+    bool IsValidPiecePos(Vector2Int checkBasePos)
     {
         bool isSuccess = true;
 
@@ -123,15 +135,21 @@ public class PieceControll
     /// <param name="deltaTime">経過時間</param>
     public void Update( float deltaTime, float dropMultiPlayer = 1.0f )
     {
-        optionRemain.dropTime -= (deltaTime * dropMultiPlayer) ;
-
-        if ( optionRemain.dropTime < 0.0f )
+        if( IsGround )
         {
-            // この時のdownは空中にある前提なので必ず成功する　はず
-            TryMove( Vector2Int.down );
+            // 接地状態なら接着までの時間を減らす
+            optionRemain.lockDownTime -= deltaTime;
         }
-
-        //optionRemain.lockDownTime -= deltaTime;
+        else
+        {
+            // 空中にいるなら、1段落ちるまでの時間を計る
+            optionRemain.dropTime -= (deltaTime * dropMultiPlayer) ;
+            if ( optionRemain.dropTime < 0.0f )
+            {
+                // この時のdownは空中にある前提なので必ず成功する　はず
+                TryMove( new Vector2Int( 0, 1 ) );
+            }
+        }
     }
 
     /// <summary>
@@ -141,6 +159,36 @@ public class PieceControll
     /// <returns>移動に　成功：True 失敗：False</returns>
     public bool TryMove( Vector2Int moveDirection )
     {
+        if( IsGround && moveDirection.y > 0 )
+        {
+            // 接地済みなのに下に動かれても...　ってことで下移動を無効化
+            moveDirection.y = 0;
+        }
+
+        Vector2Int checkPos = PiecePos + moveDirection;
+        if(!IsValidPiecePos( checkPos ))
+        {
+            // 障害物とかあって動けぬ
+            return false;
+        }
+
+        // 移動前、接地状態だった？
+        bool prevGround = IsGround;
+
+        // 移動と接地確認.
+        PiecePos = PiecePos + moveDirection;
+        CheckGroundOfSelfPiece();
+
+        if( moveDirection.y > 0 )
+        {
+            ResetRemainValueFromDrop();
+        }
+        else if ( IsGround && moveDirection.x != 0 )
+        {
+            // 横に動いたときはインフィニティチェック
+            ResetLockDownTime( true );
+        }
+
         return true;
     }
 
@@ -153,4 +201,55 @@ public class PieceControll
     {
         return true;
     }
+
+    /// <summary>
+    /// ロックダウンタイムのリセット
+    /// </summary>
+    void ResetLockDownTime( bool isMove )
+    {
+        bool haveWild = optionRemain.wildInfinity > 0;
+        bool haveMove = optionRemain.moveInfinity > 0;
+        bool haveRotate = optionRemain.rotateInfinity > 0;
+
+        bool haveMoveInfinity = haveMove || haveWild;
+        bool haveRotateInfinity = haveRotate || haveWild;
+
+        bool isReset = (isMove) ? haveMoveInfinity : haveRotateInfinity;
+
+        if( !isReset ) return;
+
+        optionRemain.wildInfinity -= 1;
+
+        if( isMove )
+        {
+            optionRemain.moveInfinity -= 1;
+        }
+        else
+        {
+            optionRemain.rotateInfinity -= 1;
+        }
+
+        optionRemain.lockDownTime = CurrentOption.lockDownTime;
+    }
+
+    /// <summary>
+    /// 落下した際のパラメータリセット.
+    /// </summary>
+    void ResetRemainValueFromDrop()
+    {
+        if( PiecePos.y <= mostBottomPos ) return;
+
+        mostBottomPos = PiecePos.y;
+        optionRemain = CurrentOption;
+    }
+
+    /// <summary>
+    /// 自分のピースが接地しているか
+    /// </summary>
+    void CheckGroundOfSelfPiece()
+    {
+        IsGround = !(IsValidPiecePos( PiecePos + new Vector2Int( 0, 1 ) ));
+    }
+
+
 }
