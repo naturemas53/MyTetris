@@ -5,6 +5,8 @@ using static CommonDefines;
 
 public class GameInitState : AState
 {
+    AState nextState = null;
+
     public GameInitState(GamePlayContext owner) : base (owner)
     {
 
@@ -30,13 +32,15 @@ public class GameInitState : AState
         commonParams.wildInfinity = 0;
 
         controll.SetControllOption( commonParams );
-        controll.SetPieceOfAppear( nextPieceSet.GetTopPiece( true ) );
+
+        AState appearState = new PieceAppearState(owner);
+        appearState.Initialize();
+        nextState = appearState.Update();
     }
 
     public override AState Update()
     {
-        // TODO:ゲーム中のステートを返す
-        return null;
+        return nextState;
     }
 
 }

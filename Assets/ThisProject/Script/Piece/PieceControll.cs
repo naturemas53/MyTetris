@@ -66,15 +66,47 @@ public class PieceControll
     }
 
     /// <summary>
-    /// 次に出現するピースを設定します
+    /// ピースを出現させます
     /// </summary>
-    public void SetPieceOfAppear( Piece piece )
+    public bool TryAppearPiece( Piece piece )
     {
         HavePiece = piece;
         InitParams();
         SetPosToAppear();
 
         OnChangePiece.Invoke();
+
+        return CheckCollision( PiecePos );
+    }
+
+    /// <summary>
+    /// コリジョンチェック　等
+    /// </summary>
+    /// <returns></returns>
+    bool CheckCollision(Vector2Int checkBasePos)
+    {
+        bool isSuccess = true;
+
+        for( int i = 0; i < HavePiece.Blocks.Count; ++i )
+        {
+            Vector2Int checkPos = checkBasePos + HavePiece.BlockOffsets[i];
+            ABlock block = OWN_FIELD.GetBlock( checkPos );
+
+            if (block == null)
+            {
+                // ここにきちゃった場合はそもそも範囲外だけどネ
+                isSuccess = false;
+                break;
+            }
+
+            if(block.IsHaveColision)
+            {
+                isSuccess = false;
+                break;
+            }
+        }
+
+        return isSuccess;
     }
 
     /// <summary>

@@ -6,13 +6,16 @@ public class PieceView : MonoBehaviour
 {
     Piece targetPiece = null;
 
-    List<ABlockView> useViews = null;
+    List<ABlockView> useViews = new List<ABlockView>();
+
+    private void Awake()
+    {
+        useViews.Clear();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        useViews = new List<ABlockView>();
-        useViews.Clear();
     }
 
     // Update is called once per frame
