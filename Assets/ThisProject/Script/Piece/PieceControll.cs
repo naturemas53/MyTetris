@@ -254,6 +254,9 @@ public class PieceControll
         HavePiece.Rotate( rotDir, out kickbacks );
         PiecePos = PiecePos + kickbackAdjustPos;
 
+        ResetLockDownTime( false );
+        CheckGroundOfSelfPiece();
+
         return true;
     }
 
