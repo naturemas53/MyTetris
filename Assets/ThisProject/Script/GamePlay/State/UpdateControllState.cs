@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static CommonDefines;
 
 public class UpdateControllState : AState
 {
@@ -25,11 +26,21 @@ public class UpdateControllState : AState
         float deltaTime = Time.deltaTime;
         owner.PieceControll.Update( deltaTime, dropMultiplayer );
 
-        Vector2Int moveDir = Vector2Int.zero;
-        if (Input.GetKeyDown(KeyCode.LeftArrow))  moveDir.x += -1;
-        if (Input.GetKeyDown(KeyCode.RightArrow)) moveDir.x += 1;
+        {
+            Vector2Int moveDir = Vector2Int.zero;
+            if (Input.GetKeyDown(KeyCode.LeftArrow)) moveDir.x += -1;
+            if (Input.GetKeyDown(KeyCode.RightArrow)) moveDir.x += 1;
 
-        if( moveDir != Vector2Int.zero ) owner.PieceControll.TryMove( moveDir );
+            if (moveDir != Vector2Int.zero) owner.PieceControll.TryMove(moveDir);
+        }
+
+        {
+            ERotateDirection rotDir = ERotateDirection.NONE;
+            if (Input.GetKeyDown(KeyCode.Z)) rotDir = ERotateDirection.LEFT;
+            if (Input.GetKeyDown(KeyCode.X)) rotDir = ERotateDirection.RIGHT;
+
+            if( rotDir != ERotateDirection.NONE ) owner.PieceControll.TryRotate( (int) rotDir );
+        }
 
         AState nextState = null;
         if( owner.PieceControll.IsLocked )

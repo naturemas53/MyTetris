@@ -95,13 +95,16 @@ public class PieceControll
     /// コリジョンチェック　等
     /// </summary>
     /// <returns></returns>
-    bool IsValidPiecePos(Vector2Int checkBasePos)
+    bool IsValidPiecePos(Vector2Int checkBasePos, Piece checkPiece = null)
     {
         bool isSuccess = true;
 
-        for( int i = 0; i < HavePiece.Blocks.Count; ++i )
+        Piece targetPiece = checkPiece;
+        if (targetPiece == null) targetPiece = HavePiece;
+
+        for( int i = 0; i < targetPiece.Blocks.Count; ++i )
         {
-            Vector2Int checkPos = checkBasePos + HavePiece.BlockOffsets[i];
+            Vector2Int checkPos = checkBasePos + targetPiece.BlockOffsets[i];
             ABlock block = OWN_FIELD.GetBlock( checkPos );
 
             if (block == null)
@@ -214,6 +217,43 @@ public class PieceControll
     /// <returns>回転に　成功：True 失敗：False</returns>
     public bool TryRotate(int rotateDirection)
     {
+        ERotateDirection rotDir = (ERotateDirection)rotateDirection;
+        Piece clonePiece = HavePiece.CloneSelf();
+
+        List<Vector2Int> kickbacks = null;
+        clonePiece.Rotate( rotDir, out kickbacks );
+
+        Vector2Int kickbackAdjustPos = Vector2Int.zero;
+
+        bool isSuccess = true;
+        if( !IsValidPiecePos( PiecePos, clonePiece ) )
+        {
+            for( int i = 0; i < kickbacks.Count; ++i )
+            {
+                if( IsValidPiecePos( PiecePos + kickbacks[i], clonePiece ) )
+                {
+                    kickbackAdjustPos = kickbacks[i];
+                    break;
+                }
+
+                if( i == kickbacks.Count - 1)
+                {
+                    isSuccess = false;
+                }
+            }
+        }
+        
+        // 回転できませんでした
+        if( !isSuccess )
+        {
+            return false;
+        }
+
+        // ここまで来て初めて回転確認を取れたので回転
+        // 必要に応じてキックバックの移動も行う
+        HavePiece.Rotate( rotDir, out kickbacks );
+        PiecePos = PiecePos + kickbackAdjustPos;
+
         return true;
     }
 

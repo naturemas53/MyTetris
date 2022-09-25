@@ -29,9 +29,9 @@ public class Piece
         get { return param.pieceDatas.blockOffSets[ currentRotate ]; }
     }
 
-    public Piece( CommonDefines.PieceParam selfParam )
+    public Piece( CommonDefines.PieceParam selfParam, CommonDefines.EPieceRotate startRotate = CommonDefines.EPieceRotate.ZERO_O_CLOCK )
     {
-        currentRotate = CommonDefines.EPieceRotate.ZERO_O_CLOCK; // 最初は0度から
+        currentRotate = startRotate;
         param = selfParam;
     }
 
@@ -57,6 +57,16 @@ public class Piece
         checkKickBackList = param.pieceDatas.kickBacks[currentRotate].data[rotateDirection];
 
         OnRotateSelf.Invoke();
+    }
+
+    /// <summary>
+    /// 自身の複製を返します。
+    /// </summary>
+    /// <returns></returns>
+    public Piece CloneSelf()
+    {
+        Piece retPiece = new Piece( param, currentRotate );
+        return retPiece;
     }
 
 }
