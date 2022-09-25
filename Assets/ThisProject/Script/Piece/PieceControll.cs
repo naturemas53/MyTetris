@@ -221,10 +221,10 @@ public class PieceControll
         {
             ResetRemainValueFromDrop();
         }
-        else if ( IsGround && moveDirection.x != 0 )
+        else if ( prevGround && moveDirection.x != 0 )
         {
             // 横に動いたときはインフィニティチェック
-            ResetLockDownTime( true );
+            UseInfinity( true );
         }
 
         return true;
@@ -269,21 +269,26 @@ public class PieceControll
             return false;
         }
 
+        bool prevIsGround = IsGround;
+
         // ここまで来て初めて回転確認を取れたので回転
         // 必要に応じてキックバックの移動も行う
         HavePiece.Rotate( rotDir, out kickbacks );
         PiecePos = PiecePos + kickbackAdjustPos;
 
-        ResetLockDownTime( false );
+        if ( prevIsGround )
+        {
+            UseInfinity(false);
+        }
         CheckGroundOfSelfPiece();
 
         return true;
     }
 
     /// <summary>
-    /// ロックダウンタイムのリセット
+    /// インフィニティ使用
     /// </summary>
-    void ResetLockDownTime( bool isMove )
+    void UseInfinity( bool isMove )
     {
         bool haveWild = optionRemain.wildInfinity > 0;
         bool haveMove = optionRemain.moveInfinity > 0;
@@ -315,6 +320,8 @@ public class PieceControll
     /// </summary>
     void ResetRemainValueFromDrop()
     {
+        optionRemain.dropTime = CurrentOption.dropTime;
+
         if( PiecePos.y <= mostBottomPos ) return;
 
         mostBottomPos = PiecePos.y;
