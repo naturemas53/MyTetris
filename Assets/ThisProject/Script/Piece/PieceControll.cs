@@ -164,8 +164,12 @@ public class PieceControll
             optionRemain.dropTime -= (deltaTime * dropMultiPlayer) ;
             if ( optionRemain.dropTime < 0.0f )
             {
+                float tmpOverTime = optionRemain.dropTime;
                 // ‚±‚ÌŽž‚Ìdown‚Í‹ó’†‚É‚ ‚é‘O’ñ‚È‚Ì‚Å•K‚¸¬Œ÷‚·‚é@‚Í‚¸
                 TryMove( new Vector2Int( 0, 1 ) );
+
+                // ’´‚¦‚½•ª‚Í‚±‚±‚Åˆø‚­.
+                optionRemain.dropTime += tmpOverTime;
             }
         }
     }

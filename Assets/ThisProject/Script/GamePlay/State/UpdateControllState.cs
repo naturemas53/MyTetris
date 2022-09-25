@@ -17,27 +17,31 @@ public class UpdateControllState : AState
 
     public override AState Update()
     {
+        GameInput input = GameInput.Instance;
+
         float dropMultiplayer = 1.0f;
-        if(Input.GetKey(KeyCode.DownArrow))
+        if(input.IsDown( GameInput.EAction.DOWN ))
         {
-            dropMultiplayer = 10.0f;
+            dropMultiplayer = 30.0f;
         }
 
         float deltaTime = Time.deltaTime;
         owner.PieceControll.Update( deltaTime, dropMultiplayer );
 
+        // ˆÚ“®
         {
             Vector2Int moveDir = Vector2Int.zero;
-            if (Input.GetKeyDown(KeyCode.LeftArrow)) moveDir.x += -1;
-            if (Input.GetKeyDown(KeyCode.RightArrow)) moveDir.x += 1;
+            if (input.IsPress(GameInput.EAction.LEFT,  true)) moveDir.x += -1;
+            if (input.IsPress(GameInput.EAction.RIGHT, true)) moveDir.x += 1;
 
             if (moveDir != Vector2Int.zero) owner.PieceControll.TryMove(moveDir);
         }
 
+        // ‰ñ“]
         {
             ERotateDirection rotDir = ERotateDirection.NONE;
-            if (Input.GetKeyDown(KeyCode.Z)) rotDir = ERotateDirection.LEFT;
-            if (Input.GetKeyDown(KeyCode.X)) rotDir = ERotateDirection.RIGHT;
+            if (input.IsPress(GameInput.EAction.ROTATE_LEFT))  rotDir = ERotateDirection.LEFT;
+            if (input.IsPress(GameInput.EAction.ROTATE_RIGHT)) rotDir = ERotateDirection.RIGHT;
 
             if( rotDir != ERotateDirection.NONE ) owner.PieceControll.TryRotate( (int) rotDir );
         }
