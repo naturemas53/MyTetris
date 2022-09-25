@@ -20,9 +20,9 @@ public class PieceAppearState : AState
         PieceControll controll = owner.PieceControll;
         ANextPieceSet nextPieceSet = owner.NextPieceSet;
 
-        isFailAppear = controll.TryAppearPiece(nextPieceSet.GetTopPiece(true));
+        isFailAppear = ! (controll.TryAppearPiece(nextPieceSet.GetTopPiece(true)));
 
-        nextState = new UpdateControllState(owner);
+        nextState = ( isFailAppear ) ? null : new UpdateControllState(owner);
     }
 
     public override AState Update()
