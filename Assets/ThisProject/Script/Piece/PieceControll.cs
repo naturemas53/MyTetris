@@ -130,6 +130,21 @@ public class PieceControll
     }
 
     /// <summary>
+    /// ピースをフィールド内に配置します.
+    /// </summary>
+    public void ApplyPieceToField()
+    {
+        for (int i = 0; i < HavePiece.Blocks.Count; ++i)
+        {
+            Vector2Int blockPos = PiecePos + HavePiece.BlockOffsets[i];
+            OWN_FIELD.SetBlock(HavePiece.Blocks[i], blockPos);
+        }
+
+        HavePiece = null;
+        OnChangePiece.Invoke();
+    }
+
+    /// <summary>
     /// 更新
     /// </summary>
     /// <param name="deltaTime">経過時間</param>
@@ -250,6 +265,4 @@ public class PieceControll
     {
         IsGround = !(IsValidPiecePos( PiecePos + new Vector2Int( 0, 1 ) ));
     }
-
-
 }

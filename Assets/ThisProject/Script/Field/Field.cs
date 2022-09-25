@@ -2,9 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Field
 {
+    public class FieldBlockChangeEvent : UnityEvent<Vector2Int>
+    {
+
+    }
+
     /// <summary>
     /// プレイエリアのサイズ（≒ピースが動ける範囲）
     /// </summary>
@@ -23,6 +29,12 @@ public class Field
     /// プレイエリアのレクト（初期位置参照等にどうぞ）
     /// </summary>
     public readonly RectInt PLAY_AREA_IDX_RECT;
+    //---以上、コンストラクト時に設定---
+
+    /// <summary>
+    /// フィールドブロックに変動があった際のイベント.
+    /// </summary>
+    public FieldBlockChangeEvent OnBlockChange { get; private set; } = new FieldBlockChangeEvent();
 
     /// <summary>
     /// フィールド内のブロック
@@ -96,6 +108,7 @@ public class Field
         int index = ConvVector2IntToIndex(setPosition);
 
         fieldBlocks[index] = setBlock;
+        OnBlockChange.Invoke( setPosition );
     }
 
     /// <summary>

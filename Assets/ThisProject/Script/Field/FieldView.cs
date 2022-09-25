@@ -27,6 +27,8 @@ public class FieldView : MonoBehaviour
     public void Initalize( Field field )
     {
         refField = field;
+        refField.OnBlockChange.AddListener( RefreshBlockFromPosition );
+
         int blockNum = refField.SIZE.x * refField.SIZE.y;
         allViews = new ABlockView[ blockNum ];
 
@@ -63,13 +65,10 @@ public class FieldView : MonoBehaviour
     /// <summary>
     /// 変更があった個所のブロックを入れ替えます
     /// </summary>
-    void RefreshBlockFromPositions( List<Vector2Int> changeBlockPosies )
+    void RefreshBlockFromPosition( Vector2Int blockPos )
     {
-        foreach( Vector2Int blockPos in changeBlockPosies )
-        {
-            RecycleBlockViewFromSelf( blockPos );
-            AddBlockViewToSelf( blockPos );
-        }
+        RecycleBlockViewFromSelf( blockPos );
+        AddBlockViewToSelf( blockPos );
     }
 
     /// <summary>

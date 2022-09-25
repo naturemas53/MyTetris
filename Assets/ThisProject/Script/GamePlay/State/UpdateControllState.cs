@@ -19,6 +19,12 @@ public class UpdateControllState : AState
         float deltaTime = Time.deltaTime;
         owner.PieceControll.Update( deltaTime );
 
-        return null;
+        AState nextState = null;
+        if( owner.PieceControll.IsLocked )
+        {
+            nextState = new PieceLockedState( owner );
+        }
+
+        return nextState;
     }
 }

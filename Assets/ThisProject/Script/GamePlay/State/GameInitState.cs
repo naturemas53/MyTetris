@@ -25,7 +25,7 @@ public class GameInitState : AState
         // ÉsÅ[ÉXëÄçÏÇÃèÄîı
         PieceControll controll = owner.PieceControll;
         PieceControllerOption commonParams = new PieceControllerOption();
-        commonParams.dropTime = 1.0f;
+        commonParams.dropTime = 0.1f;
         commonParams.lockDownTime = 1.0f;
         commonParams.moveInfinity = 128;
         commonParams.rotateInfinity = 128;
