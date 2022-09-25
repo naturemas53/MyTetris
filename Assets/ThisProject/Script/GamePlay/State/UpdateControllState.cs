@@ -19,14 +19,11 @@ public class UpdateControllState : AState
     {
         GameInput input = GameInput.Instance;
 
-        float dropMultiplayer = 1.0f;
-        if(input.IsDown( GameInput.EAction.DOWN ))
+        if(input.IsPress(GameInput.EAction.UP))
         {
-            dropMultiplayer = 30.0f;
+            owner.PieceControll.HardDrop();
+            return new PieceLockedState( owner );
         }
-
-        float deltaTime = Time.deltaTime;
-        owner.PieceControll.Update( deltaTime, dropMultiplayer );
 
         // ˆÚ“®
         {
@@ -44,6 +41,18 @@ public class UpdateControllState : AState
             if (input.IsPress(GameInput.EAction.ROTATE_RIGHT)) rotDir = ERotateDirection.RIGHT;
 
             if( rotDir != ERotateDirection.NONE ) owner.PieceControll.TryRotate( (int) rotDir );
+        }
+
+        // —Ž‰º
+        {
+            float dropMultiplayer = 1.0f;
+            if (input.IsDown(GameInput.EAction.DOWN))
+            {
+                dropMultiplayer = 30.0f;
+            }
+
+            float deltaTime = Time.deltaTime;
+            owner.PieceControll.Update(deltaTime, dropMultiplayer);
         }
 
         AState nextState = null;

@@ -175,6 +175,22 @@ public class PieceControll
     }
 
     /// <summary>
+    /// ハードドロップ（下まで急転直下 ＆ 接着）を行います
+    /// </summary>
+    public void HardDrop()
+    {
+        // 下まで下ろし切って
+        while( IsValidPiecePos( PiecePos + new Vector2Int(0,1) ) )
+        {
+            PiecePos = PiecePos + new Vector2Int(0, 1);
+        }
+
+        // 接着(一応で接地状態にもしておく)
+        IsGround = true;
+        optionRemain.lockDownTime = 0.0f;
+    }
+
+    /// <summary>
     /// ピース移動を行います(失敗の可能性アリ）
     /// </summary>
     /// <param name="moveDirection"></param>
