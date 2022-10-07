@@ -34,7 +34,7 @@ public class NormalBlock : ABlock
 
     public override void ExecuteLineAligned( Vector2Int selfBlockPos )
     {
-        // TODO:消去時の処理
+        ownerField.RemoveBlock( selfBlockPos );
     }
 
 }

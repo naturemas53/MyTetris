@@ -68,6 +68,7 @@
     <Compile Include="Assets\ThisProject\Script\GamePlay\GamePlayContext.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\Piece.cs" />
     <Compile Include="Assets\PieceMakeTool\Script\PieceCommonParams.cs" />
+    <Compile Include="Assets\ThisProject\Script\GamePlay\GameInput.cs" />
     <Compile Include="Assets\PieceMakeTool\Script\RotateTab.cs" />
     <Compile Include="Assets\ThisProject\Script\GamePlay\State\GameInitState.cs" />
     <Compile Include="Assets\ThisProject\Script\Block\BlockFactory.cs" />
@@ -96,7 +97,6 @@
     <Compile Include="Assets\ThisProject\Script\GamePlay\State\UpdateControllState.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\PieceControll.cs" />
     <Compile Include="Assets\ThisProject\Script\Block\View\ABlockView.cs" />
-    <Compile Include="Assets\ThisProject\Script\GamePlay\GameInput.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\System.Windows.Forms.dll" />

@@ -7,7 +7,7 @@ public abstract class ABlock
     /// <summary>
     /// ブロックを所有しているフィールド.
     /// </summary>
-    Field ownerField = null;
+    public Field ownerField { get; private set; } = null;
     /// <summary>
     /// 当たり判定持ち？
     /// </summary>
