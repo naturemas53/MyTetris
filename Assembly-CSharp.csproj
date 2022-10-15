@@ -97,6 +97,7 @@
     <Compile Include="Assets\ThisProject\Script\GamePlay\State\UpdateControllState.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\PieceControll.cs" />
     <Compile Include="Assets\ThisProject\Script\Block\View\ABlockView.cs" />
+    <Compile Include="Assets\ThisProject\Script\NextPieceSet\NextView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\System.Windows.Forms.dll" />

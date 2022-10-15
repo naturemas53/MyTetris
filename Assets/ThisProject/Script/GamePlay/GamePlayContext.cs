@@ -13,6 +13,8 @@ public class GamePlayContext : MonoBehaviour
     FieldView fieldView;
     [SerializeField]
     ControllPieceView controllPieceView;
+    [SerializeField]
+    NextView nextView;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,7 @@ public class GamePlayContext : MonoBehaviour
 
         fieldView.Initalize( Field );
         controllPieceView.Initialize( PieceControll );
+        nextView.DispNum = 7;
 
         state = new GameInitState( this );
         state.Initialize();
@@ -46,5 +49,7 @@ public class GamePlayContext : MonoBehaviour
     {
         // TODO:ネク順の引継ぎとかしなきゃ行けなさそうだけど、一旦保留
         NextPieceSet = setGenerator;
+
+        nextView.SetDispNext( setGenerator );
     }
 }

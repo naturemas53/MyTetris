@@ -1,10 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class ANextPieceSet
 {
+    public UnityEvent OnUpdateNext { get; private set; } = new UnityEvent();
+
     protected List<Piece> nextPieces;
+
+    public List<Piece> NextPieces
+    {
+        get
+        {
+            return new List<Piece>(this.nextPieces);
+        }
+    }
 
     /// <summary>
     /// 全ネクスト共通オプション
@@ -59,6 +70,8 @@ public abstract class ANextPieceSet
         {
             AddNextPieceImpl();
         }
+
+        OnUpdateNext.Invoke();
     }
 
     /// <summary>
@@ -74,6 +87,8 @@ public abstract class ANextPieceSet
         {
             PopTopPiece();
             AddNextPieceImpl();
+
+            OnUpdateNext.Invoke();
         }
 
         return topPiece;

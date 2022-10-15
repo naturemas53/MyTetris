@@ -15,12 +15,12 @@ public class GameInitState : AState
     public override void Initialize()
     {
         // ネクストジェネレーターの生成 & ネク順の生成
-        owner.ChangeNextGenerator( new SevenBagNextSet() );
-        ANextPieceSet nextPieceSet = owner.NextPieceSet;
+        ANextPieceSet nextPieceSet = new SevenBagNextSet();
         ANextPieceSet.CommonOption nextOption = new ANextPieceSet.CommonOption();
-        nextOption.generateNum = 3;
+        nextOption.generateNum = 7;
         nextPieceSet.CommonSetting = nextOption;
         nextPieceSet.GenerateNext();
+        owner.ChangeNextGenerator( nextPieceSet );
 
         // ピース操作の準備
         PieceControll controll = owner.PieceControll;

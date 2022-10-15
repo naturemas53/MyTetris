@@ -162,7 +162,7 @@ public class GameInput : SingletonMonoBehaviour< GameInput >
         data.remainRepeatTime = WaitInterbal; // 最初は待ちの意味合いとして長い方を入れておく
         repeatDataMap[targetAction] = data;
 
-        Debug.Log( targetAction.ToString() + "が押されました" );
+        //Debug.Log( targetAction.ToString() + "が押されました" );
 
     }
 
@@ -195,7 +195,7 @@ public class GameInput : SingletonMonoBehaviour< GameInput >
         data.remainRepeatTime = WaitInterbal; // 0以下でキーリピート発生とみなされるため、値を入れておく.
         repeatDataMap[targetAction] = data;
 
-        Debug.Log(targetAction.ToString() + "が離されました");
+        //Debug.Log(targetAction.ToString() + "が離されました");
 
     }
 }
