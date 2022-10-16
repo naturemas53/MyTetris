@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class HoldCue : MonoBehaviour
+public class HoldCue
 {
     /// <summary>
     /// Hold実行時のイベント
