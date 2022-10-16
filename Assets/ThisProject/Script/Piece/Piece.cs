@@ -60,6 +60,16 @@ public class Piece
     }
 
     /// <summary>
+    /// 向き指定を強制的に行います
+    /// </summary>
+    public void SetRotateForce(CommonDefines.EPieceRotate rotate)
+    {
+        currentRotate = rotate;
+        // 一応回転したことになるので、イベントを呼んでおく
+        OnRotateSelf.Invoke();
+    }
+
+    /// <summary>
     /// 自身の複製を返します。
     /// </summary>
     /// <returns></returns>

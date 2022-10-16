@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\PieceMakeTool\Script\BlockField.cs" />
+    <Compile Include="Assets\ThisProject\Script\NextPieceSet\NextView.cs" />
     <Compile Include="Assets\ThisProject\Script\GamePlay\State\AState.cs" />
     <Compile Include="Assets\ThisProject\Script\Field\Field.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\PieceDataColumns.cs" />
@@ -97,7 +98,7 @@
     <Compile Include="Assets\ThisProject\Script\GamePlay\State\UpdateControllState.cs" />
     <Compile Include="Assets\ThisProject\Script\Piece\PieceControll.cs" />
     <Compile Include="Assets\ThisProject\Script\Block\View\ABlockView.cs" />
-    <Compile Include="Assets\ThisProject\Script\NextPieceSet\NextView.cs" />
+    <Compile Include="Assets\ThisProject\Script\Hold\HoldCue.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\System.Windows.Forms.dll" />

@@ -8,6 +8,7 @@ public class GamePlayContext : MonoBehaviour
     public Field Field { get; private set; } = null;
     public PieceControll PieceControll { get; private set; } = null;
     public ANextPieceSet NextPieceSet { get; private set; } = null;
+    public HoldCue HoldCue { get; private set; } = null;
 
     [SerializeField]
     FieldView fieldView;
@@ -21,6 +22,7 @@ public class GamePlayContext : MonoBehaviour
     {
         Field = new Field();
         PieceControll = new PieceControll( Field );
+        HoldCue = new HoldCue();
 
         fieldView.Initalize( Field );
         controllPieceView.Initialize( PieceControll );

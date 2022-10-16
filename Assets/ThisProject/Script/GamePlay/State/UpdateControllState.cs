@@ -25,6 +25,15 @@ public class UpdateControllState : AState
             return new PieceLockedState( owner );
         }
 
+        if( input.IsPress(GameInput.EAction.HOLD) )
+        {
+            HoldCue hold = owner.HoldCue;
+            if( hold.IsCanHold )
+            {
+                return new PieceAppearState(owner, true);
+            }
+        }
+
         // ˆÚ“®
         {
             Vector2Int moveDir = Vector2Int.zero;
