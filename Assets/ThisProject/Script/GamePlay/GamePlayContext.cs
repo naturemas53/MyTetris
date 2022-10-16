@@ -16,6 +16,8 @@ public class GamePlayContext : MonoBehaviour
     ControllPieceView controllPieceView;
     [SerializeField]
     NextView nextView;
+    [SerializeField]
+    HoldView holdView;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +29,7 @@ public class GamePlayContext : MonoBehaviour
         fieldView.Initalize( Field );
         controllPieceView.Initialize( PieceControll );
         nextView.DispNum = 7;
+        holdView.Initialize( HoldCue );
 
         state = new GameInitState( this );
         state.Initialize();
