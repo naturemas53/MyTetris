@@ -7,7 +7,7 @@ public class NextView : MonoBehaviour
     /// <summary>
     /// ピース間をどれくらい空けるか
     /// </summary>
-    static readonly float PIECE_SPACER = 10.0f;
+    static readonly float PIECE_SPACER = 25.0f;
 
     /// <summary>
     /// ピース1つ当たりの高さ定義
@@ -18,12 +18,12 @@ public class NextView : MonoBehaviour
     /// <summary>
     /// ネクスト1つ目の大きさ
     /// </summary>
-    static readonly float PIECE_SCALE_TO_TOP_NEXT = 0.5f;
+    static readonly float PIECE_SCALE_TO_TOP_NEXT = 0.7f;
 
     /// <summary>
     /// ネクストの2つ目以降の大きさ
     /// </summary>
-    static readonly float PIECE_SCALE_TO_SECONDRY_NEXT = 0.25f;
+    static readonly float PIECE_SCALE_TO_SECONDRY_NEXT = 0.5f;
 
     /// <summary>
     /// 参照するピース生成機

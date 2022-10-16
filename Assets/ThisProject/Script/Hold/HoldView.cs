@@ -7,7 +7,7 @@ public class HoldView : MonoBehaviour
     /// <summary>
     /// ホールドビューの大きさ
     /// </summary>
-    static readonly float SCALE = 0.5f;
+    static readonly float SCALE = 0.7f;
 
     [SerializeField]
     PieceView holdPieceView;
